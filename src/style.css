@@ -1,0 +1,84 @@
+:root {
+  --ink: #16202b;
+  --muted: #4b5a68;
+  --line: #d7dee5;
+  --bg: #f4f6f8;
+  --panel: #ffffff;
+  --accent: #171AD0;
+  --accent-dark: #101288;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, "Segoe UI", sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+h2 { font-size: 24px; margin: 0 0 12px; }
+h3 { font-size: 17px; margin: 20px 0 8px; }
+
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+.center { text-align: center; }
+.muted { color: var(--muted); }
+.skip { position: absolute; left: -9999px; }
+.section { padding: 36px 0; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 2px; padding: 24px; }
+
+.site-header { background: var(--panel); border-bottom: 2px solid var(--accent); }
+.site-header .wrap { display: flex; align-items: center; gap: 24px; padding-top: 14px; padding-bottom: 14px; }
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ink); }
+.brand-name { font-size: 22px; font-weight: 700; letter-spacing: 0.5px; white-space: nowrap; }
+.nav { display: flex; gap: 4px; margin-left: auto; flex-wrap: wrap; }
+.nav a { color: var(--ink); text-decoration: none; padding: 8px 12px; font-size: 14px; border: 1px solid transparent; }
+.nav a.active, .nav a:hover { border-color: var(--line); background: #eef2f6; }
+.nav a.cta { background: var(--accent); color: #fff; font-weight: 700; }
+
+.site-footer { background: var(--ink); color: #c9d4de; margin-top: 40px; }
+.site-footer .wrap { padding-top: 28px; padding-bottom: 28px; display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 20px; font-size: 14px; }
+.site-footer a { color: #c9d4de; }
+.fineprint { border-top: 1px solid #33414f; font-size: 12px; }
+.fineprint .wrap { padding-top: 12px; padding-bottom: 12px; display: block; }
+
+.sky { background: var(--accent); color: #fff; }
+.sky .wrap { padding-top: 64px; padding-bottom: 72px; text-align: center; }
+.sky h1 { font-size: 42px; line-height: 1.15; margin: 0 0 12px; }
+.sky .lead { font-size: 17px; max-width: 620px; margin: 0 auto 24px; color: #F1F1FF; }
+.float-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; max-width: 900px; margin: 32px auto -110px; }
+.float-card { background: #fff; color: var(--ink); border-radius: 2px; padding: 16px; text-align: left; }
+.float-card strong { display: block; font-size: 22px; }
+.float-card span { font-size: 13px; color: var(--muted); }
+.float-card.dark { background: var(--ink); color: #fff; }
+.float-card.dark span { color: #c9d4de; }
+.after-sky { padding-top: 130px; }
+
+.svc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.svc { border: 1px solid var(--line); background: #fff; border-radius: 2px; padding: 20px; }
+.svc img { width: 150px; height: 150px; object-fit: cover; display: block; border: 1px solid var(--line); margin-bottom: 12px; }
+
+.cta-band { background: var(--accent); color: #fff; text-align: center; }
+.cta-band .wrap { padding-top: 40px; padding-bottom: 40px; }
+.cta-band h2 { margin: 0 0 8px; }
+.cta-band p { margin: 0 0 20px; color: #dbe6f0; }
+
+.btnrow { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn { display: inline-block; padding: 10px 18px; text-decoration: none; font-weight: 700; font-size: 15px; border-radius: 2px; border: 1px solid var(--accent); }
+.btn.solid { background: #fff; color: var(--accent-dark); }
+.btn.ghost { color: #fff; border-color: #fff; }
+.btn.dark { background: var(--accent); color: #fff; }
+
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.list-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.list-table th, .list-table td { border: 1px solid var(--line); padding: 10px 12px; text-align: left; vertical-align: top; }
+.list-table th { background: #e9eef3; }
+pre.code { background: #0f1720; color: #d8e2ec; padding: 16px; overflow: auto; font-size: 13px; border-radius: 2px; }
+
+@media (max-width: 860px) {
+  .grid2, .svc-grid, .site-footer .wrap { grid-template-columns: 1fr; }
+  .float-cards { grid-template-columns: 1fr 1fr; }
+  .sky h1 { font-size: 30px; }
+}

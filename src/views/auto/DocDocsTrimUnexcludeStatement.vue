@@ -1,0 +1,175 @@
+<template>
+  <div class="wrap">
+    <section class="section">
+      <p class="muted">Docs</p>
+      <h1>Java Obfuscator - Zelix KlassMaster(TM) - trimUnexclude</h1>
+      <div class="panel">
+        <ul>
+          <li>Java Obfuscator - Zelix KlassMaster(TM) - trimUnexclude</li>
+          <li>The trimUnexclude Statement The ZKM Script trimUnexclude statement acts only on the set of excluded objects created by a trimExclude statement. The statement removes the specified objects from the set of excluded objects so that they become available once more to be removed from the bytecode by the ZKM Script trim statement.</li>
+          <li>The trimUnexclude statement is intended to be used in conjunction with a trimExclude statement to specify a final set of excluded objects that would have been difficult to achieve using a trimExclude statement alone. Typically, in such cases, an initial trimExclude statement would set the broad exclusions and then the trimUnexclude statement would specify the exceptions to those broad exclusions.</li>
+          <li>Successive trimUnexclude statements have a cumulative effect . The effect of all trim exclusions and unexclusions that have been set is removed by a resetTrimExclusions statement.</li>
+          <li>The remainder of this page is organized into the following sections.</li>
+          <li>Examples and Explanation</li>
+          <li>Syntax</li>
+          <li>Class unexclude parameters</li>
+          <li>Field unexclude parameters</li>
+          <li>Method unexclude parameters</li>
+          <li>Annotation unexclude parameters</li>
+          <li>Its annotations must match any specified annotations.</li>
+          <li>Its modifiers (e.g. public final ) must match all parameter modifiers. So if the parameters are public abstract !interface then the class must be public , abstract and NOT an interface to be unexcluded.</li>
+          <li>If the parameter has an archive qualifier then the class must be contained in an archive which matches that archive qualifier.</li>
+          <li>Its package qualifiers must match any specified package unexclude parameter component. If there is no package unexclude parameter component then the class must be in the default package.</li>
+          <li>Its unqualified name must match the specified class name specification.</li>
+          <li>If the parameter has a containing clause then the class must contain members which match the specified class</li>
+          <li>If the parameter has an extends clause then the class must be a subclass of the specified class</li>
+          <li>If the parameter has an implements clause then the class must directly or indirectly implement all of the specified interfaces</li>
+        </ul>
+        <pre class="code"><code>trimUnexclude *          and         //unexclude all classes in the default package
+              *.Class1   and         //unexclude all classes with the unqualified class name "Class1"
+              public !final *.* and  //unexclude all public non-final classes
+              package abstract *.C*s extends pack1.Class1 and 
+                           //unexclude all "public abstract" classes that
+                           //have an unqualified name matching "C*s" and extend "pack1.Class1". p*.*     and //unexclude all classes in packages that start with the character "p"
+              //unexclude all classes with a name that start with "Class" except for "Class0" and "Class1"
+              *.(Class* &amp;&amp; !(Class0 || Class1)) and 
+              "MyJar*.jar"!*.* and //unexclude all classes contained in a JAR file with a name matching "MyJar*.jar"
+              @*.MyAnnotation0 *.*;  //unexclude all classes annotated which an annotation matching *.MyAnnotation0</code></pre>
+        <ul>
+          <li>Its containing class must match any class unexclude parameter component (see Class unexclude parameters ).</li>
+          <li>Its annotations must match any specified field level annotations.</li>
+          <li>Its modifiers (e.g. public volatile ) must match all parameter field modifiers. So if the parameters are public static !transient then the field must be public , static and NOT transient to be unexcluded.</li>
+          <li>Its type (e.g. int[] or java.lang.String) must match the parameter field type if it exists.</li>
+          <li>Its name must match the parameter field name.</li>
+        </ul>
+        <pre class="code"><code>trimUnexclude *.* *  and //unexclude all fields
+              //unexclude all non-transient "int" fields matching "f*" in classes with the unqualified name "Class1"
+              *.Class1 !transient int f* and 
+              //unexclude all "public volatile" fields in public classes. Also unexclude the containing class. public *.*^ public volatile * and 
+              *.* @*.MyAnnotation0 *;  //Exclude all fields annotated with a class matching *.MyAnnotation0.</code></pre>
+        <ul>
+          <li>Its annotations must match any specified method or method parameter level annotations.</li>
+          <li>Its modifiers (e.g. public native ) must match all parameter method modifiers. So if the parameters are public static !synchronized then the method must be public , static and NOT synchronized to be unexcluded.</li>
+          <li>Its name must match the parameter method name.</li>
+          <li>Its argument types (e.g. int[], java.lang.String ) must match the parameter argument types if they exist. (A single parameter argument type of "*" matches any method argument types including no arguments.) If the parameter has no argument type then the method must take no arguments.</li>
+          <li>Its throws clause must contain all the classes specified in the unexclude parameter's throw clause. So, if the unexclude parameter's throws clause is throws java.io.IOException then the method must throw java.io.IOException or one of its subclasses to be unexcluded.</li>
+        </ul>
+        <pre class="code"><code>trimUnexclude *.* *(*)           and  //unexclude all methods
+              *.* public &lt;init&gt;() and  //unexclude all public no argument constructor
+              *.* !static m*()   and  //unexclude all non-static methods taking no parameters with names matching "m*"
+              //unexclude all "native" methods. Also unexclude the containing class. *.*^ native *(*)  and  
+              *.* *(*) throws java.io.IOException and  //unexclude all methods that throw java.io.IOException. //Unexclude all "abstract" methods that take a single String. *.* abstract *(java.lang.String) and 
+              //Unexclude all methods in pack1.Class1 along with the matching methods' return and parameter types
+              pack1.Class1 *(*) +signatureClasses and 
+              //Unexclude all the methods of any class implementing "Serializable" in a package that matches "pack1.*"
+              pack1.* implements java.io.Serializable *(*) and 
+              //Exclude all methods annotated with a class matching *.MyAnnotation0. *.* @*.MyAnnotation0 *(*);</code></pre>
+        <pre class="code"><code>trimUnexclude @pack0.AnnotationClass0 and //Don't remove any pack0.AnnotationClass0 annotations
+              @*.MyAnnotation1; //Don't remove any annotations matching *.MyAnnotation1</code></pre>
+        <p>The ZKM Script trimUnexclude statement acts only on the set of excluded objects created by a</p>
+        <p>statement. The statement removes the specified objects from the set of excluded objects so that they become available once more to be removed from the bytecode by the ZKM Script</p>
+        <p>The trimUnexclude statement is intended to be used in conjunction with a</p>
+        <p>statement to specify a final set of excluded objects that would have been difficult to achieve using a</p>
+        <p>statement alone. Typically, in such cases, an initial</p>
+        <p>statement would set the broad exclusions and then the trimUnexclude</p>
+        <p>statement would specify the exceptions to those broad exclusions.</p>
+        <p>Successive trimUnexclude statements have a cumulative effect . The effect of all trim exclusions and unexclusions that have been set is removed by a</p>
+        <p>trimUnexclude statement parameters may be loosely categorized into the following groups</p>
+        <p>Put informally (with mandatory components in bold), the syntax is:</p>
+        <p>&lt;classAnnotations&gt; &lt;classModifiers&gt; "&lt;archiveQualifier&gt;"!&lt;packageQualifiers&gt;.</p>
+        <p>&lt;className&gt; &lt;containingClause&gt; &lt;extendsClause&gt; &lt;implementsClause&gt; ;</p>
+        <p>For a class to be unexcluded, all of the following must be true:</p>
+        <p>Its modifiers (e.g. public final ) must match all parameter modifiers.</p>
+        <p>public , abstract and NOT an interface to be unexcluded.</p>
+        <p>Its package qualifiers must match any specified package unexclude parameter component.</p>
+        <p>If there is no package unexclude parameter component then the class must be in the default package.</p>
+        <p>If the class parameter is a component of a field or method unexclude parameter then a final "^" tag after the class name specification causes the enclosing class to be unexcluded as well.</p>
+        <p>trimUnexclude * and //unexclude all classes in the default package</p>
+        <p>*.Class1 and //unexclude all classes with the unqualified class name "Class1"</p>
+        <p>public !final *.* and //unexclude all public non-final classes</p>
+        <p>package abstract *.C*s extends pack1.Class1 and</p>
+        <p>//unexclude all "public abstract" classes that</p>
+        <p>//have an unqualified name matching "C*s" and extend "pack1.Class1".</p>
+        <p>p*.* and //unexclude all classes in packages that start with the character "p"</p>
+        <p>//unexclude all classes with a name that start with "Class" except for "Class0" and "Class1"</p>
+        <p>*.(Class* &amp;&amp; !(Class0 || Class1)) and "MyJar*.jar"!*.* and //unexclude all classes contained in a JAR file with a name matching "MyJar*.jar"</p>
+        <p>@*.MyAnnotation0 *.*; //unexclude all classes annotated which an annotation matching *.MyAnnotation0</p>
+        <p>&lt;className&gt; &lt;extendsClause&gt; &lt;implementsClause&gt;</p>
+        <p>&lt;fieldAnnotations&gt; &lt;fieldModifiers&gt; &lt;fieldType&gt; &lt;fieldName&gt;;</p>
+        <p>For a field to be unexcluded, all of the following must be true:</p>
+        <p>Its modifiers (e.g. public volatile ) must match all parameter field modifiers.</p>
+        <p>public , static and NOT transient to be unexcluded.</p>
+        <p>trimUnexclude *.* * and //unexclude all fields</p>
+        <p>//unexclude all non-transient "int" fields matching "f*" in classes with the unqualified name "Class1"</p>
+        <p>//unexclude all "public volatile" fields in public classes. Also unexclude the containing class.</p>
+        <p>public *.*^ public volatile * and *.* @*.MyAnnotation0 *; //Exclude all fields annotated with a class matching *.MyAnnotation0.</p>
+        <p>&lt;methodAnnotations&gt; &lt;methodModifiers&gt; &lt;methodName&gt;( &lt;argumentTypes&gt; ) &lt;throwsClause&gt; +signatureClasses;</p>
+        <p>For a method to be unexcluded, all of the following must be true:</p>
+        <p>Its modifiers (e.g. public native ) must match all parameter method modifiers.</p>
+        <p>public , static and NOT synchronized to be unexcluded.</p>
+        <p>Its argument types (e.g. int[], java.lang.String ) must match the parameter argument types if they exist.</p>
+        <p>(A single parameter argument type of "*" matches any method argument types including no arguments.) If the parameter has no argument type then the method must take no arguments.</p>
+        <p>Its throws clause must contain all the classes specified in the unexclude parameter's throw clause.</p>
+        <p>So, if the unexclude parameter's throws clause is throws java.io.IOException then the method must throw java.io.IOException or one of its subclasses to be unexcluded.</p>
+        <p>The trimUnexclude statement supports the special method names &lt;init&gt; and &lt;clinit&gt;</p>
+        <p>which represent constructor and class initializer method names respectively. However, class initializers are automatically excluded from being trimmed in any case.</p>
+        <p>trimUnexclude *.* *(*) and //unexclude all methods</p>
+        <p>*.* public &lt;init&gt;() and //unexclude all public no argument constructor</p>
+        <p>*.* !static m*() and //unexclude all non-static methods taking no parameters with names matching "m*"</p>
+        <p>//unexclude all "native" methods. Also unexclude the containing class.</p>
+        <p>*.*^ native *(*) and *.* *(*) throws java.io.IOException and //unexclude all methods that throw java.io.IOException.</p>
+        <p>//Unexclude all "abstract" methods that take a single String.</p>
+        <p>//Unexclude all methods in pack1.Class1 along with the matching methods' return and parameter types</p>
+        <p>//Unexclude all the methods of any class implementing "Serializable" in a package that matches "pack1.*"</p>
+        <p>pack1.* implements java.io.Serializable *(*) and</p>
+        <p>//Exclude all methods annotated with a class matching *.MyAnnotation0.</p>
+        <p>An annotation unexclude parameter is fundamentally different from the Class unexclude , Field unexclude and Method unexclude</p>
+        <p>parameters discussed above. An annotation unexclude parameter tells Zelix KlassMaster(TM) to unexclude specified annotations on classes, fields or methods that have been specified by an</p>
+        <p>trimUnexclude @pack0.AnnotationClass0 and //Don't remove any pack0.AnnotationClass0 annotations</p>
+        <p>@*.MyAnnotation1; //Don't remove any annotations matching *.MyAnnotation1</p>
+        <p>" trimUnexclude " unexcludeParameter (" and " unexcludeParameter) * ";"</p>
+        <p>annotationUnexcludeParameter ::= "@" wildcardClassName</p>
+        <p>annotationSpecifier ::= ("@" [packageExcludeParameter] nameSpecifier) | annotationSpecifierAndList</p>
+        <p>annotationSpecifierAndList ::= ["!"] "(" annotationSpecifierOrList ("&amp;&amp;" annotationSpecifierOrList)* ")"</p>
+        <p>annotationSpecifierOrList ::= annotationSpecifier ("||" annotationSpecifier)*</p>
+        <p>[annotationSpecifier] [["!"] " public " | " package "]</p>
+        <p>[["!"] " abstract "] [["!"] " final "] [["!"] " interface "] [["!"] " synthetic "] [["!"] " enum "] [["!"] " annotation "]</p>
+        <p>[["!"] " abstract "] [["!"] " final "] [["!"] " interface "]</p>
+        <p>[" \" " archiveQualifier " \" " " ! "] [packageExcludeParameter ["."]] nameSpecifier ["^"] ["+"] [containingClause]</p>
+        <p>containingClause ::= " containing " " { " " memberAndList " " } "</p>
+        <p>extendsClause ::= " extends " [annotationSpecifier] wildcardClassName</p>
+        <p>classUnexcludeParameter [annotationSpecifier] [["!"] " public " | " protected "| " package "| " private "]</p>
+        <p>[["!"] " static "] [["!"] " final "] [["!"] " transient "] [["!"] " volatile "] [["!"] " synthetic "] [["!"] " enum "]</p>
+        <p>fullyQualifiedClassName ::= name ("." name) *</p>
+        <p>implementsClause ::= " implements " [annotationSpecifier] wildcardClassName ("," [annotationSpecifier] wildcardClassName) *</p>
+        <p>memberAndList ::= ["!"] "(" memberOrList ("&amp;&amp;" memberOrList)* ")"</p>
+        <p>memberOrList ::= memberSpecifier ("||" memberSpecifier)*</p>
+        <p>memberSpecifier ::= fieldExcludeParameter | methodExcludeParameter</p>
+        <p>nameAndList ::= ["!"] "(" nameOrList ("&amp;&amp;" nameOrList)* ")"</p>
+        <p>[["!"] " abstract "] [["!"] " static "] [["!"] " final "] [["!"] " native "] [["!"] " synchronized "] [["!"] " synthetic "] [["!"] " bridge "]</p>
+        <p>nameSpecifier "(" [ "*" | (parameter ("," parameter) * )] ")" ["throws" wildcardClassName]</p>
+        <p>name ::= (["0"-"9","a"-"z","A"-"Z","$","_"]) +</p>
+        <p>i.e. a Java identifer (e.g. a package, class, field or method name) with no wildcards allowed</p>
+        <p>nameOrList ::= nameSpecifier ("||" nameSpecifier)*</p>
+        <p>nameSpecifier ::= wildcardName | nameAndList</p>
+        <p>packageExcludeParameter ::= packageName | packageNameAndList</p>
+        <p>packageName ::= wildcardName ("." wildcardName) * "."</p>
+        <p>NB: the final "." is part of the package name</p>
+        <p>packageNameAndList ::= ["!"] "(" packageNameOrList ("&amp;&amp;" packageNameOrList)* ")"</p>
+        <p>packageNameOrList ::= packageExcludeParameter ("||" packageExcludeParameter)*</p>
+        <p>parameter ::= [annotationSpecifier] ("*" | "?" | type)</p>
+        <p>(" byte " | " short " | " char " | " int " | " long " | " float " | " double "| " boolean " |</p>
+        <p>wildcardClassName ::= wildcardName ("." wildcardName) *</p>
+        <p>wildcardName ::= (["*","0"-"9","a"-"z","A"-"Z","$","_"]) +</p>
+        <p>i.e. a Java identifer (e.g. a package, class, field or method name) with the "*" wildcard allowed</p>
+        <p>Where archiveQualifier is a relative or absolute archive path name with the "*" wildcard allowed. E.g. "/lib/*.jar" or "myJar0.jar"</p>
+      </div>
+    </section>
+  </div>
+</template>
+
+<script setup lang="ts">
+import { useHead } from '@unhead/vue'
+const schema = {"@context":"https://schema.org","@type":"WebPage","name":"Java Obfuscator - Zelix KlassMaster(TM) - trimUnexclude","url":"https://zkm-web.vercel.app/docs/trimUnexcludeStatement"}
+useHead({ title: 'Java Obfuscator - Zelix KlassMaster(TM) - trimUnexclude | Zelix KlassMaster', meta: [{ name: 'description', content: 'Complete local copy of this Zelix KlassMaster reference page.' }, { property: 'og:image', content: 'https://zkm-web.vercel.app/og/docs.png' }], link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/docs/trimUnexcludeStatement' }], script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }] })
+</script>
