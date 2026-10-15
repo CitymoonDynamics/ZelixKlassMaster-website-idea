@@ -1,14 +1,14 @@
-import Home from './views/Home.vue'
-import Features from './views/Features.vue'
-import Pricing from './views/Pricing.vue'
-import Docs from './views/Docs.vue'
-import Support from './views/Support.vue'
-import Contact from './views/Contact.vue'
-import Legal from './views/Legal.vue'
-import Sitemap from './views/Sitemap.vue'
+import type { RouteComponent, RouteRecordRaw } from 'vue-router'
 import { autoRoutes } from './autoRoutes'
-import type { Component } from 'vue'
-import type { RouteRecordRaw } from 'vue-router'
+
+const Home = () => import('./views/Home.vue')
+const Features = () => import('./views/Features.vue')
+const Pricing = () => import('./views/Pricing.vue')
+const Docs = () => import('./views/Docs.vue')
+const Support = () => import('./views/Support.vue')
+const Contact = () => import('./views/Contact.vue')
+const Legal = () => import('./views/Legal.vue')
+const Sitemap = () => import('./views/Sitemap.vue')
 
 declare module 'vue-router' {
   interface RouteMeta {
@@ -17,7 +17,7 @@ declare module 'vue-router' {
   }
 }
 
-function r(path: string, component: Component, title: string, desc: string): RouteRecordRaw {
+function r(path: string, component: RouteComponent, title: string, desc: string): RouteRecordRaw {
   return { path, component, meta: { title, desc } }
 }
 

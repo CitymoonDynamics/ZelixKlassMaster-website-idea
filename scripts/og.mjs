@@ -31,7 +31,7 @@ for (const [name, title] of Object.entries(sections)) {
       { input: logo, left: 120, top: 200 },
       { input: textSvg(title), left: 0, top: 0 }
     ])
-    .png()
+    .png({ compressionLevel: 9, palette: true })
     .toFile(`public/og/${name}.png`)
   console.log('og/' + name + '.png')
 }
