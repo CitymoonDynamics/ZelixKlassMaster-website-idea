@@ -26,6 +26,8 @@ h3 { font-size: 17px; margin: 20px 0 8px; }
 .center { text-align: center; }
 .muted { color: var(--muted); }
 .skip { position: absolute; left: -9999px; }
+.skip:focus { left: 8px; top: 8px; background: #fff; color: var(--ink); padding: 8px 12px; border: 2px solid var(--accent); z-index: 100; }
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
 .section { padding: 36px 0; }
 .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 2px; padding: 24px; }
 
@@ -34,13 +36,14 @@ h3 { font-size: 17px; margin: 20px 0 8px; }
 .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ink); }
 .brand-name { font-size: 22px; font-weight: 700; letter-spacing: 0.5px; white-space: nowrap; }
 .nav { display: flex; gap: 4px; margin-left: auto; flex-wrap: wrap; }
-.nav a { color: var(--ink); text-decoration: none; padding: 8px 12px; font-size: 14px; border: 1px solid transparent; }
+.nav a { color: var(--ink); text-decoration: none; padding: 11px 14px; font-size: 14px; border: 1px solid transparent; }
 .nav a.active, .nav a:hover { border-color: var(--line); background: #eef2f6; }
 .nav a.cta { background: var(--accent); color: #fff; font-weight: 700; }
 
 .site-footer { background: var(--ink); color: #c9d4de; margin-top: 40px; }
 .site-footer .wrap { padding-top: 28px; padding-bottom: 28px; display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 20px; font-size: 14px; }
 .site-footer a { color: #c9d4de; }
+.foot-title { font-size: 14px; margin: 0 0 8px; color: #fff; }
 .fineprint { border-top: 1px solid #33414f; font-size: 12px; }
 .fineprint .wrap { padding-top: 12px; padding-bottom: 12px; display: block; }
 
@@ -79,6 +82,15 @@ pre.code { background: #0f1720; color: #d8e2ec; padding: 16px; overflow: auto; f
 
 @media (max-width: 860px) {
   .grid2, .svc-grid, .site-footer .wrap { grid-template-columns: 1fr; }
-  .float-cards { grid-template-columns: 1fr 1fr; }
+  .float-cards { grid-template-columns: 1fr 1fr; margin-bottom: 0; }
+  .sky .wrap { padding-bottom: 40px; }
+  .after-sky { padding-top: 40px; }
   .sky h1 { font-size: 30px; }
+  .list-table { font-size: 12px; }
+  .list-table th, .list-table td { padding: 6px 8px; }
+  .nav { display: none; width: 100%; flex-direction: column; margin-left: 0; }
+  .nav.open { display: flex; }
+  .menu-btn { display: inline-block; margin-left: auto; }
+  .site-header .wrap { flex-wrap: wrap; }
 }
+.menu-btn { display: none; }

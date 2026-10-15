@@ -6,7 +6,8 @@
         <img src="/img/logo.avif" alt="Zelix KlassMaster logo" width="34" height="34">
         <span class="brand-name">Zelix KlassMaster</span>
       </RouterLink>
-      <nav class="nav" aria-label="Primary">
+      <button class="menu-btn btn dark" :aria-expanded="menuOpen" aria-controls="primary-nav" @click="menuOpen = !menuOpen">Menu</button>
+      <nav id="primary-nav" class="nav" :class="{ open: menuOpen }" aria-label="Primary">
         <RouterLink to="/" exact-active-class="active">Home</RouterLink>
         <RouterLink to="/features" active-class="active">Features</RouterLink>
         <RouterLink to="/pricing" active-class="active">Pricing</RouterLink>
@@ -27,12 +28,12 @@
         <strong>Zelix KlassMaster</strong>
         <p class="muted">Heavy duty Java obfuscator since 1997. Flow Obfuscation, string and constant encryption, trim and ZKM Script.</p>
       </div>
-      <div>
-        <strong>Features</strong><br>
+      <nav aria-label="Features">
+        <h2 class="foot-title">Features</h2>
         <span v-for="f in featLinks" :key="f.slug"><RouterLink :to="'/features/' + f.slug">{{ f.title }}</RouterLink><br></span>
-      </div>
-      <div>
-        <strong>Docs</strong><br>
+      </nav>
+      <nav aria-label="Docs">
+        <h2 class="foot-title">Docs</h2>
         <RouterLink to="/docs">Documentation index</RouterLink><br>
         <RouterLink to="/docs/gettingStarted">Getting started</RouterLink><br>
         <RouterLink to="/docs/langZKMScript">ZKM Script reference</RouterLink><br>
@@ -41,22 +42,26 @@
         <RouterLink to="/docs/buildToolMaven">Maven</RouterLink><br>
         <RouterLink to="/docs/toolsStackTraceTranslate">Stack Trace Translate</RouterLink><br>
         <RouterLink to="/docs/toolsZKMScriptHelper">Script Helper</RouterLink>
-      </div>
-      <div>
-        <strong>Company</strong><br>
+      </nav>
+      <nav aria-label="Company">
+        <h2 class="foot-title">Company</h2>
         <RouterLink to="/pricing">Pricing and licenses</RouterLink><br>
         <RouterLink to="/support">Support and FAQ</RouterLink><br>
         <RouterLink to="/contact">Contact</RouterLink><br>
         <RouterLink to="/legal">Terms and privacy</RouterLink><br>
         <RouterLink to="/sitemap">Full sitemap</RouterLink>
-      </div>
+      </nav>
     </div>
     <div class="fineprint"><div class="wrap">Copyright 1997-2026 Zelix Pty Ltd. Prices in USD, tax excluded. <RouterLink to="/legal">Legal notice</RouterLink>.</div></div>
   </footer>
 </template>
 
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
+import { ref, watch } from 'vue'
+import { RouterLink, RouterView, useRoute } from 'vue-router'
 import { features } from './data/features'
 const featLinks = features.map((f) => ({ slug: f.slug, title: f.title }))
+const menuOpen = ref(false)
+const route = useRoute()
+watch(() => route.path, () => { menuOpen.value = false })
 </script>

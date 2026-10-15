@@ -6,7 +6,7 @@
       <div v-for="g in groups" :key="g.name" class="panel">
         <h2>{{ g.name }} ({{ g.items.length }})</h2>
         <table class="list-table">
-          <thead><tr><th>Page</th><th>Local Page</th></tr></thead>
+          <thead><tr><th scope="col">Page</th><th scope="col">Local Page</th></tr></thead>
           <tbody>
             <tr v-for="u in g.items" :key="u.loc">
               <td>{{ short(u.loc) }}</td>

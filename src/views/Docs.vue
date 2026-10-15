@@ -20,7 +20,7 @@ saveAll "dist/app-obf.jar" "dist/map.log";</code></pre>
         <div class="panel">
           <h2>Statement Reference</h2>
           <table class="list-table">
-            <thead><tr><th>Statement</th><th>Use</th></tr></thead>
+            <thead><tr><th scope="col">Statement</th><th scope="col">Use</th></tr></thead>
             <tbody>
               <tr><td>open / classpath</td><td>Load classes and dependencies</td></tr>
               <tr><td>exclude / unexclude</td><td>Rename exclusions</td></tr>
@@ -38,7 +38,7 @@ saveAll "dist/app-obf.jar" "dist/map.log";</code></pre>
       <div v-for="g in groups" :key="g.name" class="panel">
         <h3>{{ g.name }} ({{ g.items.length }})</h3>
         <table class="list-table">
-          <thead><tr><th>Page</th><th>Summary</th></tr></thead>
+          <thead><tr><th scope="col">Page</th><th scope="col">Summary</th></tr></thead>
           <tbody>
             <tr v-for="e in g.items" :key="e.slug">
               <td><RouterLink :to="'/docs/' + e.slug">{{ e.title }}</RouterLink></td>

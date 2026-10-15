@@ -18,7 +18,7 @@
       <h3>Multi License and Site Pricing</h3>
       <div class="panel">
         <table class="list-table">
-          <thead><tr><th>Effective Licenses</th><th>Bundle Price (USD)</th><th>Separate Price (USD)</th></tr></thead>
+          <thead><tr><th scope="col">Effective Licenses</th><th scope="col">Bundle Price (USD)</th><th scope="col">Separate Price (USD)</th></tr></thead>
           <tbody>
             <tr><td>1</td><td>585</td><td>585</td></tr>
             <tr><td>2</td><td>1,025</td><td>1,170</td></tr>

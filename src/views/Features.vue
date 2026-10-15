@@ -5,7 +5,7 @@
       <p class="muted">Faithful summary of klassmaster/features.html and its 20 detail pages. First generation: Name Obfuscation. Second generation: Flow, String Encryption and Reference. Third generation: enhanced Flow built on Method Parameter Changing.</p>
       <div class="panel">
         <table class="list-table">
-          <thead><tr><th>Feature</th><th>Category</th><th>Technical Description</th></tr></thead>
+          <thead><tr><th scope="col">Feature</th><th scope="col">Category</th><th scope="col">Technical Description</th></tr></thead>
           <tbody>
             <tr v-for="f in items" :key="f.slug"><td><strong><RouterLink :to="'/features/' + f.slug">{{ f.name }}</RouterLink></strong></td><td>{{ f.cat }}</td><td>{{ f.desc }}</td></tr>
           </tbody>

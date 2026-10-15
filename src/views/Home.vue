@@ -45,7 +45,7 @@
       <div class="panel">
         <h2>Pricing</h2>
         <table class="list-table">
-          <thead><tr><th>License</th><th>Price (USD)</th><th>Order</th></tr></thead>
+          <thead><tr><th scope="col">License</th><th scope="col">Price (USD)</th><th scope="col">Order</th></tr></thead>
           <tbody>
             <tr><td>Small Developer</td><td>290</td><td><RouterLink to="/pricing">Buy</RouterLink></td></tr>
             <tr><td>Standard</td><td>585</td><td><RouterLink to="/pricing">Buy</RouterLink></td></tr>
