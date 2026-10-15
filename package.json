@@ -2,6 +2,7 @@
   "name": "zkm-web",
   "private": true,
   "version": "1.0.0",
+  "packageManager": "pnpm@11.22.0",
   "description": "ZKM Java Obfuscator. Corporate site. Vue 3 + Vite, single server deploy.",
   "type": "module",
   "scripts": {
@@ -10,7 +11,6 @@
     "preview": "vite preview",
     "lint": "eslint src scripts",
     "sitemap": "node scripts/sitemap.mjs",
-    "build-views": "node scripts/buildViews.mjs",
     "images": "node scripts/fetchImages.mjs && node scripts/fetchImages2.mjs",
     "audit": "node scripts/audit.mjs && node scripts/checkTags.mjs"
   },

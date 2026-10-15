@@ -6,10 +6,10 @@
         <div class="panel">
           <h2>Sales</h2>
           <p>Purchase questions, multi licenses and site licenses.</p>
-          <p><a href="mailto:sales@example.com">sales@example.com</a></p>
+          <p><a href="mailto:sales@zelix.com">sales@zelix.com</a></p>
           <h2>Support</h2>
           <p>Include ZKM version, Java version, OS and the relevant map.log.</p>
-          <p><a href="mailto:support@example.com">support@example.com</a></p>
+          <p><a href="mailto:support@zelix.com">support@zelix.com</a></p>
           <p class="muted"><RouterLink to="/page/contact">Full contact page</RouterLink> | <RouterLink to="/page/maillist">Mailing list</RouterLink></p>
         </div>
         <div class="panel">
@@ -40,7 +40,7 @@ const email = ref('')
 const topic = ref('License purchase')
 const msg = ref('')
 const opened = ref(false)
-const recipient = computed(() => (topic.value === 'Technical support' ? 'support@example.com' : 'sales@example.com'))
+const recipient = computed(() => (topic.value === 'Technical support' ? 'support@zelix.com' : 'sales@zelix.com'))
 function compose() {
   const subject = encodeURIComponent('[ZKM] ' + topic.value + ' from ' + name.value)
   const body = encodeURIComponent(msg.value + '\n\nReply to: ' + email.value)

@@ -7,12 +7,12 @@
         <div class="panel">
           <h2>Small Developer: USD 290</h2>
           <p>For organizations of up to 2 people in the last 12 months. One machine. Built for independents and micro businesses.</p>
-          <a class="btn dark" href="mailto:sales@example.com?subject=ZKM%20Small%20Developer%20License">Request Small License</a>
+          <a class="btn dark" href="mailto:sales@zelix.com?subject=ZKM%20Small%20Developer%20License">Request Small License</a>
         </div>
         <div class="panel">
           <h2>Standard: USD 585</h2>
           <p>For organizations of 3 or more people. One machine. Includes all obfuscation features.</p>
-          <a class="btn dark" href="mailto:sales@example.com?subject=ZKM%20Standard%20License">Request Standard License</a>
+          <a class="btn dark" href="mailto:sales@zelix.com?subject=ZKM%20Standard%20License">Request Standard License</a>
         </div>
       </div>
       <h3>Multi License and Site Pricing</h3>
