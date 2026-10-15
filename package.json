@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc --noEmit && vite-ssg build",
+    "build": "vue-tsc --noEmit && vite-ssg build && pnpm sitemap",
     "preview": "vite preview",
     "lint": "eslint src scripts",
     "sitemap": "node scripts/sitemap.mjs",

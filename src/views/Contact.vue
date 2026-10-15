@@ -14,13 +14,14 @@
         </div>
         <div class="panel">
           <h2>Contact Form</h2>
-          <form @submit.prevent="sent = true">
-            <p><label>Name<br><input v-model="name" required type="text" name="name"></label></p>
-            <p><label>Email<br><input v-model="email" required type="email" name="email"></label></p>
-            <p><label>Topic<br><select v-model="topic" name="topic"><option>License purchase</option><option>Upgrade</option><option>Technical support</option><option>Press</option></select></label></p>
-            <p><label>Message<br><textarea v-model="msg" required rows="5" name="message"></textarea></label></p>
-            <p><button class="btn dark" type="submit">Send Inquiry</button></p>
-            <p v-if="sent" role="status">Inquiry recorded. We will reply by email.</p>
+          <p class="muted">This form opens your email client with your message prefilled. Nothing is sent automatically.</p>
+          <form @submit.prevent="compose">
+            <p><label for="cf-name">Name<br><input id="cf-name" v-model="name" required type="text" name="name" autocomplete="name"></label></p>
+            <p><label for="cf-email">Email<br><input id="cf-email" v-model="email" required type="email" name="email" autocomplete="email"></label></p>
+            <p><label for="cf-topic">Topic<br><select id="cf-topic" v-model="topic" name="topic"><option>License purchase</option><option>Upgrade</option><option>Technical support</option><option>Press</option></select></label></p>
+            <p><label for="cf-msg">Message<br><textarea id="cf-msg" v-model="msg" required rows="5" name="message"></textarea></label></p>
+            <p><button class="btn dark" type="submit">Open Email Client</button></p>
+            <p v-if="opened" role="status">Your email client should have opened with the message ready to send.</p>
           </form>
         </div>
       </div>
@@ -29,7 +30,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { RouterLink } from 'vue-router'
 import { useHead } from '@unhead/vue'
 useHead({ title: 'Contact Sales | Zelix KlassMaster', meta: [{ name: 'description', content: 'Contact the Zelix KlassMaster sales and support team about licenses and upgrades.' }, { property: 'og:image', content: 'https://zkm-web.vercel.app/og/contact.png' }], link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/contact' }] })
@@ -37,7 +38,14 @@ const name = ref('')
 const email = ref('')
 const topic = ref('License purchase')
 const msg = ref('')
-const sent = ref(false)
+const opened = ref(false)
+const recipient = computed(() => (topic.value === 'Technical support' ? 'support@example.com' : 'sales@example.com'))
+function compose() {
+  const subject = encodeURIComponent('[ZKM] ' + topic.value + ' from ' + name.value)
+  const body = encodeURIComponent(msg.value + '\n\nReply to: ' + email.value)
+  window.location.href = 'mailto:' + recipient.value + '?subject=' + subject + '&body=' + body
+  opened.value = true
+}
 </script>
 
 <style scoped>
