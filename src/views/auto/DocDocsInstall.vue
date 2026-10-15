@@ -18,7 +18,6 @@
           <li>the file defaultExclude.txt</li>
           <li>the file defaultTrimExclude.txt</li>
         </ul>
-        <h2>After Installation</h2>
         <p>Zelix KlassMaster(TM) 27.0 is distributed in either a zip archive or tar.gz.</p>
         <p>To expand the tar.gz archive in Unix use the</p>
         <p>. In Windows both the tar.gz and zip files can be expanded using WinZip .</p>
@@ -42,6 +41,40 @@
 
 <script setup lang="ts">
 import { useHead } from '@unhead/vue'
-const schema = {"@context":"https://schema.org","@type":"WebPage","name":"After Installation","url":"https://zkm-web.vercel.app/docs/install"}
-useHead({ title: 'Java Obfuscator - Zelix KlassMaster(TM) - Installation | Zelix KlassMaster', meta: [{ name: 'description', content: 'Complete local copy of this Zelix KlassMaster reference page.' }, { property: 'og:image', content: 'https://zkm-web.vercel.app/og/docs.png' }], link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/docs/install' }], script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }] })
+const schema = [{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "After Installation",
+  "url": "https://zkm-web.vercel.app/docs/install"
+}, {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://zkm-web.vercel.app/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Docs",
+      "item": "https://zkm-web.vercel.app/docs"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "After Installation"
+    }
+  ]
+}]
+useHead({
+  title: 'After Installation | Zelix KlassMaster',
+  meta: [{ name: 'description', content: 'After Installation | Zelix KlassMaster' },
+    { property: 'og:image', content: 'https://zkm-web.vercel.app/og/docs.png' }
+  ],
+  link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/docs/install' }],
+  script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }]
+})
 </script>

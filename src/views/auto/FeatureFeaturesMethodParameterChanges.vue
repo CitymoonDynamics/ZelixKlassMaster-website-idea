@@ -12,7 +12,6 @@
       </div>
       <div class="panel" style="margin-top: 20px;">
         <h2>Complete Local Copy</h2>
-        <h2>Hardening by using Method Parameter Changes</h2>
         <p>Java Obfuscation - Zelix KlassMaster(TM) - Java Method Parameter Changes</p>
         <p>The Zelix KlassMaster(TM) Method Parameter Changes functionality supports the String Encryption and Reference Obfuscation functions by "hardening" them against attack by deobfuscators.</p>
         <p>Additional parameters are added to the methods that make use of String Encryption and/or Reference Obfuscation</p>
@@ -30,6 +29,40 @@
 
 <script setup lang="ts">
 import { useHead } from '@unhead/vue'
-const schema = {"@context":"https://schema.org","@type":"WebPage","name":"Hardening by using Method Parameter Changes","url":"https://zkm-web.vercel.app/features/featuresMethodParameterChanges"}
-useHead({ title: 'Java Obfuscation - Zelix KlassMaster(TM) - Java Method Parameter Changes | Zelix KlassMaster', meta: [{ name: 'description', content: 'Complete local copy of this Zelix KlassMaster reference page.' }, { property: 'og:image', content: 'https://zkm-web.vercel.app/og/features.png' }], link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/features/featuresMethodParameterChanges' }], script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }] })
+const schema = [{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Method Parameter Changes",
+  "url": "https://zkm-web.vercel.app/features/featuresMethodParameterChanges"
+}, {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://zkm-web.vercel.app/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Features",
+      "item": "https://zkm-web.vercel.app/features"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Method Parameter Changes"
+    }
+  ]
+}]
+useHead({
+  title: 'Method Parameter Changes | Zelix KlassMaster',
+  meta: [{ name: 'description', content: 'Method Parameter Changes | Zelix KlassMaster' },
+    { property: 'og:image', content: 'https://zkm-web.vercel.app/og/features.png' }
+  ],
+  link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/features/featuresMethodParameterChanges' }],
+  script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }]
+})
 </script>

@@ -42,5 +42,6 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
 import { useHead } from '@unhead/vue'
-useHead({ title: 'Pricing and Licenses | Zelix KlassMaster', meta: [{ name: 'description', content: 'Zelix KlassMaster licenses: Small Developer USD 290, Standard USD 585, multi license and site license USD 2195.' }, { property: 'og:image', content: 'https://zkm-web.vercel.app/og/pricing.png' }], link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/pricing' }] })
+import { SITE_URL } from '../site'
+useHead({ title: 'Pricing and Licenses | Zelix KlassMaster', meta: [{ name: 'description', content: 'Zelix KlassMaster licenses: Small Developer USD 290, Standard USD 585, multi license and site license USD 2195.' }, { property: 'og:image', content: SITE_URL + '/og/pricing.png' }], link: [{ rel: 'canonical', href: SITE_URL + '/pricing' }] })
 </script>

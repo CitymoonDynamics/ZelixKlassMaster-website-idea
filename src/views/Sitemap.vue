@@ -24,7 +24,8 @@ import { computed } from 'vue'
 import { RouterLink } from 'vue-router'
 import { sourceUrls, localTarget } from '../data/sourceSitemap'
 import { useHead } from '@unhead/vue'
-useHead({ title: 'Full Sitemap | Zelix KlassMaster', meta: [{ name: 'description', content: 'Every Zelix KlassMaster page: 155 source URLs hosted locally.' }, { property: 'og:image', content: 'https://zkm-web.vercel.app/og/sitemap.png' }], link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/sitemap' }] })
+import { SITE_URL } from '../site'
+useHead({ title: 'Full Sitemap | Zelix KlassMaster', meta: [{ name: 'description', content: 'Every Zelix KlassMaster page: 155 source URLs hosted locally.' }, { property: 'og:image', content: SITE_URL + '/og/sitemap.png' }], link: [{ rel: 'canonical', href: SITE_URL + '/sitemap' }] })
 
 const urls = sourceUrls
 const groups = computed(() => {

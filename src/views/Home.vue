@@ -70,5 +70,6 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
 import { useHead } from '@unhead/vue'
-useHead({ title: 'Zelix KlassMaster | Heavy Duty Java Obfuscator Since 1997', meta: [{ name: 'description', content: 'Zelix KlassMaster protects Java bytecode against decompilation with Flow Obfuscation, string encryption and trim. Licenses from USD 290.' }, { property: 'og:image', content: 'https://zkm-web.vercel.app/og/home.png' }], link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/' }] })
+import { SITE_URL } from '../site'
+useHead({ title: 'Zelix KlassMaster | Heavy Duty Java Obfuscator Since 1997', meta: [{ name: 'description', content: 'Zelix KlassMaster protects Java bytecode against decompilation with Flow Obfuscation, string encryption and trim. Licenses from USD 290.' }, { property: 'og:image', content: SITE_URL + '/og/home.png' }], link: [{ rel: 'canonical', href: SITE_URL + '/' }] })
 </script>

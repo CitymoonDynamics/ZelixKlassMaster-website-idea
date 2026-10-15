@@ -1,6 +1,10 @@
 import { writeFile, mkdir, rm } from 'node:fs/promises'
 import { readFileSync } from 'node:fs'
 
+const SITE_URL = (readFileSync('.env', 'utf8').match(/^SITE_URL=(.+)$/m) || [])[1]?.trim()
+  ?? process.env.SITE_URL
+  ?? 'https://zkm-web.vercel.app'
+
 const src = readFileSync('src/data/sourceSitemap.ts', 'utf8')
 const locs = [...src.matchAll(/loc: '([^']+)'/g)].map((m) => m[1])
 
@@ -125,15 +129,21 @@ function escHtml(s) {
   return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
 }
 
-function renderBlocks(blocks) {
+function renderBlocks(blocks, startAtH3 = false) {
   let out = ''
   let i = 0
+  let seenH2 = startAtH3
   while (i < blocks.length) {
     const b = blocks[i]
     if (b.tag === 'h1') {
       i++
     } else if (b.tag === 'h2' || b.tag === 'h3') {
-      out += `        <h3>${escHtml(b.text)}</h3>\n`
+      if (!seenH2) {
+        out += `        <h2>${escHtml(b.text)}</h2>\n`
+        seenH2 = true
+      } else {
+        out += `        <h3>${escHtml(b.text)}</h3>\n`
+      }
       i++
     } else if (b.tag === 'pre') {
       out += `        <pre class="code"><code>${escHtml(b.text)}</code></pre>\n`
@@ -224,15 +234,52 @@ for (const loc of locs) {
     if (!r.ok) throw new Error('status ' + r.status)
     const data = extract(await r.text())
     const h1 = data.blocks.find((b) => b.tag === 'h1')?.text || data.blocks.find((b) => b.tag === 'h2')?.text || data.title || comp
+    const cur = curated[parts[1]] || null
+    const pageTitle = (cur && cur.title) || h1
     const schema = {
       '@context': 'https://schema.org',
       '@type': 'WebPage',
-      name: h1,
-      url: 'https://zkm-web.vercel.app' + routePath
+      name: pageTitle,
+      url: SITE_URL + routePath
     }
-    const cur = curated[parts[1]] || null
-    const pageTitle = (cur && cur.title) || h1
-    const headTitle = JSON.stringify((data.title || pageTitle).slice(0, 120) + ' | Zelix KlassMaster')
+    const breadcrumb = {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL + '/' },
+        { '@type': 'ListItem', position: 2, name: crumb, item: SITE_URL + '/' + crumb.toLowerCase() },
+        { '@type': 'ListItem', position: 3, name: pageTitle }
+      ]
+    }
+    const schemas = [schema, breadcrumb]
+    if (routePath === '/page/faq') {
+      const pairs = []
+      let current = null
+      for (const b of data.blocks) {
+        const q = b.tag === 'h3' ? b.text.match(/^Q\d+\.\s*(.+)$/) : null
+        if (q) {
+          current = { name: q[1], answers: [] }
+          pairs.push(current)
+          continue
+        }
+        if (current && (b.tag === 'p' || b.tag === 'li') && b.text.length > 20) {
+          current.answers.push(b.text)
+        }
+      }
+      const mainEntity = pairs
+        .filter((x) => x.answers.length)
+        .map((x) => ({
+          '@type': 'Question',
+          name: x.name,
+          acceptedAnswer: { '@type': 'Answer', text: x.answers.join(' ').slice(0, 800) }
+        }))
+      if (mainEntity.length) {
+        schemas.push({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity })
+      }
+    }
+    const firstPara = data.blocks.find((b) => b.tag === 'p' && b.text.length >= 40)?.text ?? ''
+    const headTitle = JSON.stringify((pageTitle.replace(/^Java Obfuscator - Zelix KlassMaster(\(TM\))? - /, '').slice(0, 55) + ' | Zelix KlassMaster'))
+    const headDesc = (firstPara.slice(0, 150) || pageTitle).replace(/\\/g, '\\\\').replace(/'/g, "\\'")
     const ogSection = routePath.startsWith('/features') ? 'features' : routePath.startsWith('/docs') ? 'docs' : 'reference'
     const curatedHtml =
       cur && cur.body.length
@@ -249,18 +296,26 @@ for (const loc of locs) {
       `      <div class="panel">\n` +
       curatedHtml +
       (curatedHtml ? `      </div>\n      <div class="panel" style="margin-top: 20px;">\n        <h2>Complete Local Copy</h2>\n` : '') +
-      renderBlocks(data.blocks) +
+      renderBlocks(data.blocks, Boolean(curatedHtml)) +
       `      </div>\n` +
       `    </section>\n` +
       `  </div>\n` +
       `</template>\n\n` +
       `<script setup lang="ts">\n` +
       `import { useHead } from '@unhead/vue'\n` +
-      `const schema = ${JSON.stringify(schema).replace(/<\//g, '<\\/')}\n` +
-      `useHead({ title: ${headTitle}, meta: [{ name: 'description', content: 'Complete local copy of this Zelix KlassMaster reference page.' }, { property: 'og:image', content: 'https://zkm-web.vercel.app/og/${ogSection}.png' }], link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app${routePath}' }], script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }] })\n` +
+      `const schema = ${JSON.stringify(schemas, null, 2).replace(/<\//g, '<\\/')}\n` +
+      `useHead({\n` +
+      `  title: ${headTitle},\n` +
+      `  meta: [\n` +
+      `    { name: 'description', content: '${headDesc}' },\n` +
+      `    { property: 'og:image', content: '${SITE_URL}/og/${ogSection}.png' }\n` +
+      `  ],\n` +
+      `  link: [{ rel: 'canonical', href: '${SITE_URL}${routePath}' }],\n` +
+      `  script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }]\n` +
+      `})\n` +
       `</` + `script>\n`
     await writeFile('src/views/auto/' + comp + '.vue', content)
-    routes.push({ path: routePath, comp, title: data.title || h1 })
+    routes.push({ path: routePath, comp, title: pageTitle, desc: firstPara.slice(0, 150) || pageTitle })
     ok++
     if (ok % 20 === 0) console.log(ok + ' views')
   } catch (e) {
@@ -268,8 +323,28 @@ for (const loc of locs) {
   }
 }
 
+const seenTitles = new Map()
+for (const x of routes) {
+  let t = x.title.slice(0, 60)
+  if (seenTitles.has(t)) {
+    const tail = x.path.split('/').pop() ?? ''
+    t = (t.slice(0, 52) + ' ' + tail).slice(0, 60)
+    let n = 2
+    while (seenTitles.has(t)) t = (t.slice(0, 57) + n++).slice(0, 60)
+  }
+  seenTitles.set(t, true)
+  x.title = t
+}
+const seenDescs = new Map()
+for (const x of routes) {
+  let d = x.desc
+  if (seenDescs.has(d)) d = (d + ' ' + x.title).slice(0, 160)
+  seenDescs.set(d, true)
+  x.desc = d
+}
+
 const routeLines = routes
-  .map((x) => `  { path: '${x.path}', component: () => import('./views/auto/${x.comp}.vue'), meta: { title: ${JSON.stringify(x.title.slice(0, 120) + ' | Zelix KlassMaster')}, desc: 'Complete local copy of this Zelix KlassMaster reference page.' } },`)
+  .map((x) => `  { path: '${x.path}', component: () => import('./views/auto/${x.comp}.vue'), meta: { title: ${JSON.stringify(x.title + ' | Zelix KlassMaster')}, desc: ${JSON.stringify(x.desc)} } },`)
   .join('\n')
 await writeFile(
   'src/autoRoutes.ts',

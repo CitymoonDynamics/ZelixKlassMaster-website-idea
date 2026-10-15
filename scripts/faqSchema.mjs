@@ -38,17 +38,26 @@ const isCli = process.argv[1] && process.argv[1].endsWith('faqSchema.mjs')
 if (isCli) {
   const file = 'src/views/auto/PageFaq.vue'
   let vue = readFileSync(file, 'utf8')
+  if (vue.includes('"FAQPage"')) {
+    console.log('already has FAQPage')
+    process.exit(0)
+  }
   const tpl = vue.slice(0, vue.indexOf('</template>'))
   const faq = faqSchema(tpl)
   console.log('pairs: ' + faq.mainEntity.length)
-  const cur = (vue.match(/const schema = (.*?)\nuseHead/) || [])[1]
-  if (!cur) {
+  const sm = vue.match(/const schema = ([\s\S]*?)\nuseHead/)
+  if (!sm) {
     console.log('NOSCHEMA')
     process.exit(1)
   }
-  const web = cur.startsWith('[') ? cur.slice(1, cur.indexOf('}, {')) + '}' : cur
-  const schemaLine = `const schema = [${web}, ${JSON.stringify(faq)}]`
-  vue = vue.replace(/const schema = .*?\nuseHead/, () => schemaLine + '\nuseHead')
+  const arr = JSON.parse(sm[1])
+  if (arr.some((x) => x['@type'] === 'FAQPage')) {
+    console.log('already has FAQPage')
+    process.exit(0)
+  }
+  arr.push(faq)
+  const pretty = JSON.stringify(arr, null, 2).replace(/<\//g, '<\\/')
+  vue = vue.replace(/const schema = [\s\S]*?\nuseHead/, () => `const schema = ${pretty}\nuseHead`)
   writeFileSync(file, vue)
   console.log('faq schema injected')
 }

@@ -34,6 +34,40 @@
 
 <script setup lang="ts">
 import { useHead } from '@unhead/vue'
-const schema = {"@context":"https://schema.org","@type":"WebPage","name":"Java Obfuscator - Zelix KlassMaster(TM) - Serialization and RMI Support","url":"https://zkm-web.vercel.app/features/featuresSupport"}
-useHead({ title: 'Java Obfuscator - Zelix KlassMaster(TM) - Serialization and RMI Support | Zelix KlassMaster', meta: [{ name: 'description', content: 'Complete local copy of this Zelix KlassMaster reference page.' }, { property: 'og:image', content: 'https://zkm-web.vercel.app/og/features.png' }], link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/features/featuresSupport' }], script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }] })
+const schema = [{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Serialization, RMI and Beans",
+  "url": "https://zkm-web.vercel.app/features/featuresSupport"
+}, {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://zkm-web.vercel.app/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Features",
+      "item": "https://zkm-web.vercel.app/features"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Serialization, RMI and Beans"
+    }
+  ]
+}]
+useHead({
+  title: 'Serialization, RMI and Beans | Zelix KlassMaster',
+  meta: [{ name: 'description', content: 'Serialization, RMI and Beans | Zelix KlassMaster' },
+    { property: 'og:image', content: 'https://zkm-web.vercel.app/og/features.png' }
+  ],
+  link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/features/featuresSupport' }],
+  script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }]
+})
 </script>

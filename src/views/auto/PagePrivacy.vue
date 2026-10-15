@@ -16,7 +16,7 @@
           <li>To improve our website and software based on your feedback.</li>
           <li>To send marketing communications, if you have opted in to receive them.</li>
         </ul>
-        <h3>3. Disclosure of Your Information</h3>
+        <h2>3. Disclosure of Your Information</h2>
         <ul>
           <li>With Service Providers: We may share your information with third-party vendors who provide services on our behalf, such as payment processing, order fulfillment, and marketing services.</li>
           <li>Legal Compliance: We may disclose your information if required to do so by law or in response to valid requests by public authorities.</li>
@@ -49,6 +49,40 @@
 
 <script setup lang="ts">
 import { useHead } from '@unhead/vue'
-const schema = {"@context":"https://schema.org","@type":"WebPage","name":"Privacy Policy","url":"https://zkm-web.vercel.app/page/privacy"}
-useHead({ title: 'Privacy Policy | Zelix KlassMaster', meta: [{ name: 'description', content: 'Complete local copy of this Zelix KlassMaster reference page.' }, { property: 'og:image', content: 'https://zkm-web.vercel.app/og/reference.png' }], link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/page/privacy' }], script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }] })
+const schema = [{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Privacy Policy",
+  "url": "https://zkm-web.vercel.app/page/privacy"
+}, {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://zkm-web.vercel.app/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Reference",
+      "item": "https://zkm-web.vercel.app/reference"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Privacy Policy"
+    }
+  ]
+}]
+useHead({
+  title: 'Privacy Policy | Zelix KlassMaster',
+  meta: [{ name: 'description', content: 'Privacy Policy | Zelix KlassMaster' },
+    { property: 'og:image', content: 'https://zkm-web.vercel.app/og/reference.png' }
+  ],
+  link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/page/privacy' }],
+  script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }]
+})
 </script>

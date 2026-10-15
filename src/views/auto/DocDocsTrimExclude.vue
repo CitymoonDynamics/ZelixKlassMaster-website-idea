@@ -22,7 +22,7 @@
           <li>Test button</li>
           <li>Skip button</li>
         </ul>
-        <h3>Default trim exclusion parameters</h3>
+        <h2>Default trim exclusion parameters</h2>
         <p>The Zelix KlassMaster(TM) "Trim" tool removes unused classes, fields and methods. Trim exclusions specify the classes, fields and methods that</p>
         <p>should not be removed by the "Trim" tool.</p>
         <p>Zelix KlassMaster(TM) has inbuilt default trim exclusions that, along with your "Application type" and</p>
@@ -75,6 +75,40 @@
 
 <script setup lang="ts">
 import { useHead } from '@unhead/vue'
-const schema = {"@context":"https://schema.org","@type":"WebPage","name":"Default trim exclusion parameters","url":"https://zkm-web.vercel.app/docs/trimExclude"}
-useHead({ title: 'Java Obfuscator - Zelix KlassMaster(TM) - Trim Exclusions | Zelix KlassMaster', meta: [{ name: 'description', content: 'Complete local copy of this Zelix KlassMaster reference page.' }, { property: 'og:image', content: 'https://zkm-web.vercel.app/og/docs.png' }], link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/docs/trimExclude' }], script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }] })
+const schema = [{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Default trim exclusion parameters",
+  "url": "https://zkm-web.vercel.app/docs/trimExclude"
+}, {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://zkm-web.vercel.app/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Docs",
+      "item": "https://zkm-web.vercel.app/docs"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Default trim exclusion parameters"
+    }
+  ]
+}]
+useHead({
+  title: 'Default trim exclusion parameters | Zelix KlassMaster',
+  meta: [{ name: 'description', content: 'Default trim exclusion parameters | Zelix KlassMaster' },
+    { property: 'og:image', content: 'https://zkm-web.vercel.app/og/docs.png' }
+  ],
+  link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/docs/trimExclude' }],
+  script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }]
+})
 </script>

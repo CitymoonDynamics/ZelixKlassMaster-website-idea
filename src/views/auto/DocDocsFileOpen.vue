@@ -10,7 +10,7 @@
           <li>load the directory in which it is stored or</li>
           <li>load the zip or jar archive file in which it is stored.</li>
         </ul>
-        <h3>Basics</h3>
+        <h2>Basics</h2>
         <h3>Selecting Directories</h3>
         <ul>
           <li>Click on " width="48" height="26" /&gt;</li>
@@ -50,6 +50,40 @@
 
 <script setup lang="ts">
 import { useHead } from '@unhead/vue'
-const schema = {"@context":"https://schema.org","@type":"WebPage","name":"Basics","url":"https://zkm-web.vercel.app/docs/fileOpen"}
-useHead({ title: 'Java Obfuscator - Zelix KlassMaster(TM) | Zelix KlassMaster', meta: [{ name: 'description', content: 'Complete local copy of this Zelix KlassMaster reference page.' }, { property: 'og:image', content: 'https://zkm-web.vercel.app/og/docs.png' }], link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/docs/fileOpen' }], script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }] })
+const schema = [{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Basics",
+  "url": "https://zkm-web.vercel.app/docs/fileOpen"
+}, {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://zkm-web.vercel.app/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Docs",
+      "item": "https://zkm-web.vercel.app/docs"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Basics"
+    }
+  ]
+}]
+useHead({
+  title: 'Basics | Zelix KlassMaster',
+  meta: [{ name: 'description', content: 'Basics | Zelix KlassMaster' },
+    { property: 'og:image', content: 'https://zkm-web.vercel.app/og/docs.png' }
+  ],
+  link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/docs/fileOpen' }],
+  script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }]
+})
 </script>

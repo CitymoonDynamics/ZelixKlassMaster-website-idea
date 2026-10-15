@@ -14,7 +14,7 @@
           <li>non-class files such as image and properties files opened from jar and zip archives,</li>
           <li>manifest, EJB deployment descriptor and service provider files</li>
         </ul>
-        <h3>Example</h3>
+        <h2>Example</h2>
         <h3>Syntax</h3>
         <p>Please note that the saveAllOld statement is obsolete and it will eventually be removed from the ZKM Script language.</p>
         <p>The ZKM Script saveAllOld statement saves all opened classes to the specified directory.</p>
@@ -33,6 +33,40 @@
 
 <script setup lang="ts">
 import { useHead } from '@unhead/vue'
-const schema = {"@context":"https://schema.org","@type":"WebPage","name":"Example","url":"https://zkm-web.vercel.app/docs/saveAllOldStatement"}
-useHead({ title: 'Java Obfuscator - Zelix KlassMaster(TM) - saveAllOld | Zelix KlassMaster', meta: [{ name: 'description', content: 'Complete local copy of this Zelix KlassMaster reference page.' }, { property: 'og:image', content: 'https://zkm-web.vercel.app/og/docs.png' }], link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/docs/saveAllOldStatement' }], script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }] })
+const schema = [{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Example",
+  "url": "https://zkm-web.vercel.app/docs/saveAllOldStatement"
+}, {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://zkm-web.vercel.app/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Docs",
+      "item": "https://zkm-web.vercel.app/docs"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Example"
+    }
+  ]
+}]
+useHead({
+  title: 'Example | Zelix KlassMaster2345',
+  meta: [{ name: 'description', content: 'Example | Zelix KlassMaster' },
+    { property: 'og:image', content: 'https://zkm-web.vercel.app/og/docs.png' }
+  ],
+  link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/docs/saveAllOldStatement' }],
+  script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }]
+})
 </script>

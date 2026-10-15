@@ -56,7 +56,8 @@ import { computed } from 'vue'
 import { RouterLink } from 'vue-router'
 import { docEntries } from '../data/docs'
 import { useHead } from '@unhead/vue'
-useHead({ title: 'Documentation and ZKM Script | Zelix KlassMaster', meta: [{ name: 'description', content: 'ZKM Script reference, tutorials and statement documentation for the Zelix KlassMaster Java obfuscator.' }, { property: 'og:image', content: 'https://zkm-web.vercel.app/og/docs.png' }], link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/docs' }] })
+import { SITE_URL } from '../site'
+useHead({ title: 'Documentation and ZKM Script | Zelix KlassMaster', meta: [{ name: 'description', content: 'ZKM Script reference, tutorials and statement documentation for the Zelix KlassMaster Java obfuscator.' }, { property: 'og:image', content: SITE_URL + '/og/docs.png' }], link: [{ rel: 'canonical', href: SITE_URL + '/docs' }] })
 
 const entries = docEntries
 const groups = computed(() => ['tutorial', 'statement', 'tool'].map((name) => ({

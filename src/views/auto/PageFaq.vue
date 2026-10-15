@@ -56,7 +56,7 @@
           <li>What do the "API warnings detected during open" or "API calls detected that may not be handled automatically" messages mean?</li>
           <li>Does Zelix KlassMaster(TM) support Java bytecode generated from Kotlin(TM) source?</li>
         </ul>
-        <h3>Answers</h3>
+        <h2>Answers</h2>
         <h3>Q0. How do I get started with Zelix KlassMaster(TM)?</h3>
         <h3>Q1. Why wont Zelix KlassMaster(TM) run?</h3>
         <ul>
@@ -631,13 +631,330 @@ exclude kotlin.* + and //exclude all classes, fields and methods in kotlin packa
         <p>However, if you compile with the JDK 1.5 using the "-source 1.4 -target 1.4" parameters then you may still be able to use earlier versions of Zelix KlassMaster(TM) without further difficulties.</p>
         <p>Inner classes are compiled to be top level classes.</p>
         <p>If you have an inner class Inner within the class com.mycompany.Outer then that inner class Outer.Inner will be compiled to the class file com/mycompany/Outer$Inner.class .</p>
-        <p>At the level of the bytecode, the name of that inner class will be com.mycompany.Outer$Inner . Note the presence of the '$' character in the unqualified class name.</p>      </div>
+        <p>At the level of the bytecode, the name of that inner class will be com.mycompany.Outer$Inner . Note the presence of the '$' character in the unqualified class name.</p>
+        <p>When you refer to inner classes in ZKM Script statements, you need to use the bytecode level name. So you would use the name com.mycompany.Outer$Inner and not com.mycompany.Outer.Inner .</p>
+        <p>Because all inner classes will contain the '$' character in their unqualified class name, you could exclude all inner classes with the following ZKM Script</p>
+        <p>statement. However, the statement would also match any non-inner classes that have been given a name including an embedded '$' character.</p>
+        <p>You can get this error when you use Zelix KlassMaster(TM) to take the place of the ProGuard obfuscator in the Google Android Eclipse plugin.</p>
+        <p>You should first look in the ZKM_PG_log.txt file.</p>
+        <p>This is a special log file which Zelix KlassMaster(TM) uses to write messages relating to the translation of a ProGuard configuration file.</p>
+        <p>The ZKM_PG_log.txt file will also give you the location of the Zelix KlassMaster log file which is named ZKM_log.txt by default.</p>
+        <p>You should look in the Zelix KlassMaster log file for any warnings or errors.</p>
+        <p>See the ProGuard Configuration File Translation Tutorial Troubleshooting section for more detail.</p>
+        <p>Note that Android(TM) Studio 3.6 no longer allows you to use ProGuard. You must use R8.</p>
+        <p>So unfortunately you cannot use Zelix KlassMaster(TM) in place of ProGuard in this version.</p>
+        <p>Everything set out below assumes that you are using a version of Android(TM) Studio prior to 3.6.</p>
+        <p>Below is an example ZKM Script for the obfuscation of Java classes before they are compiled into an APK. It should be adequate for most Android&amp;#153 Apps. Obviously it would have to be modified for your environment.</p>
+        <p>classpath "/usr/local/java/android-sdk/platforms/android-9/android.jar" ;</p>
+        <p>trimExclude public *.^*^ extends android.app.Activity and public *.^*^ extends android.app.Application and public *.^*^ extends android.app.Service and public *.^*^ extends android.content.BroadcastReceiver and public *.^*^ extends android.content.ContentProvider and public *.^*^ extends android.view.View public &lt;init&gt;(android.content.Context) and public *.^*^ extends android.view.View public &lt;init&gt;(android.content.Context,android.util.AttributeSet) and public *.^*^ extends android.view.View public &lt;init&gt;(android.content.Context,android.util.AttributeSet,int) and public *.^*^ extends android.view.View public set*(*) and *.^*^ containing {public &lt;init&gt;(android.content.Context,android.util.AttributeSet)} public &lt;init&gt;(android.content.Context,android.util.AttributeSet) and *.^*^ containing {public &lt;init&gt;(android.content.Context,android.util.AttributeSet,int)} public &lt;init&gt;(android.content.Context,android.util.AttributeSet,int) and *.* extends android.content.Context public *(android.view.View) and *.* extends android.content.Context public *(android.view.MenuItem) and *.* implements android.os.Parcelable static android.os.Parcelable$Creator CREATOR and *.R$* public static * and *.* @android.webkit.JavascriptInterface *(*) ;</p>
+        <p>trim deleteDeprecatedAttributes=true deleteSourceFileAttributes=true deleteAnnotationAttributes=false deleteExceptionAttributes=true //deleteUnknownAttributes=true ;</p>
+        <p>exclude public *.^*^ extends android.app.Activity and public *.^*^ extends android.app.Application and public *.^*^ extends android.app.Service and public *.^*^ extends android.content.BroadcastReceiver and public *.^*^ extends android.content.ContentProvider and public *.^*^ extends android.view.View public &lt;init&gt;(android.content.Context) and public *.^*^ extends android.view.View public &lt;init&gt;(android.content.Context,android.util.AttributeSet) and public *.^*^ extends android.view.View public &lt;init&gt;(android.content.Context,android.util.AttributeSet,int) and public *.^*^ extends android.view.View public set*(*) and *.^*^ containing {public &lt;init&gt;(android.content.Context,android.util.AttributeSet)} public &lt;init&gt;(android.content.Context,android.util.AttributeSet) and *.^*^ containing {public &lt;init&gt;(android.content.Context,android.util.AttributeSet,int)} public &lt;init&gt;(android.content.Context,android.util.AttributeSet,int) and *.* extends android.content.Context public *(android.view.View) and *.* extends android.content.Context public *(android.view.MenuItem) and *.* implements android.os.Parcelable static android.os.Parcelable$Creator CREATOR and *.R$* public static * and *.* @android.webkit.JavascriptInterface *(*) ;</p>
+        <p>obfuscate keepGenericsInfo=false keepInnerClassInfo=false obfuscateFlow=none //can change from none to light, normal or aggressive encryptStringLiterals=none //can change from none to normal, aggressive, flowObfuscate or enhanced exceptionObfuscation=none //can change from none to light or heavy autoReflectionHandling=none //can change from none to normal randomize=false //can change from false to true collapsePackagesWithDefault="" preverify=false //don't need to preverify if only used for Android mixedCaseClassNames=ifInArchive keepBalancedLocks=true //ensures compatibility with ART verifier ;</p>
+        <p>saveAll archiveCompression=all "bin/classes-processed.jar" ;</p>
+        <p>By default, Zelix KlassMaster(TM) will exclude certain classes, fields and methods from being trimmed by the Trim function or renamed by the Name Obfuscation function.</p>
+        <p>However, you may override these defaults with your own.</p>
+        <p>In the case of the Trim function, Zelix KlassMaster(TM) looks for a file in the current user directory named "defaultTrimExclude.txt".</p>
+        <p>If it finds the file then it will use its contents as the default trim exclusions.</p>
+        <p>You can tell Zelix KlassMaster(TM) to use a different file for default trim exclusions by using the -dte command line option.</p>
+        <p>In the case of Name Obfuscation, Zelix KlassMaster(TM) looks for a file in the current user directory named "defaultExclude.txt".</p>
+        <p>If it finds the file then it will use its contents as the default exclusions.</p>
+        <p>You can tell Zelix KlassMaster(TM) to use a different file for default exclusions by using the -de command line option.</p>
+        <p>If the default exclusion file cannot be found then Zelix KlassMaster(TM) applies its predefined internal default exclusions. If the defaultExclude.txt file exists but is is empty then there there will be no default exclusions.</p>
+        <p>The same applies for the default trim exclusion file.</p>
+        <p>Yes it will. Although you could obfuscate ALL of the field and method references in your application, it would have a dramatic and unacceptable impact on your application's performance.</p>
+        <p>Reflection API calls are much slower than direct references.</p>
+        <p>The Reference Obfuscation functionality is intended to be used sparingly to obscure references in and to sensitive parts of your application.</p>
+        <p>It can make decompiled code quite incomprehensible. It can also obscure key API calls which otherwise would allow a hacker to "zero in" on a particular part of your bytecode.</p>
+        <p>When you use the Reference Obfuscation functionality to obscure sensitive parts of your application you should be careful to also obscure a significant number non-sensitive parts.</p>
+        <p>Otherwise you will be drawing attention to the sensitive parts which would be counter productive.</p>
+        <p>However, you should be careful not to unnecessarily obfuscate references in performance sensitive parts of your code such as within deeply nested loops.</p>
+        <p>For maximum resistance against deobfuscation, it is recommended that Reference Obfuscation be used along with the Method Parameter Changes functionality.</p>
+        <p>Zelix KlassMaster(TM) will perform some processing in parallel by default and where possible to reduce obfuscation time.</p>
+        <p>The size of the reduction in obfuscation time could be more than 30% but it will very much depend upon</p>
+        <p>Parallel processing can be disabled by setting the ZKM_USE_PARALLEL special configuration option to false .</p>
+        <p>Note that these Reflection API call warnings are just warnings rather than errors. Zelix KlassMaster detects Reflection API calls and attempts to automatically resolve the object that is being accessed by name.</p>
+        <p>If it isn't able to 100% resolve an access, then it outputs a warning to the ZKM_log.txt file (if you are using ZKM Script) which starts with the line "API calls detected that may not be handled automatically...".</p>
+        <p>(If you are using the "-v" parameter, then resolved accesses are also listed but are marked as "RESOLVED".) These warnings indicate</p>
+        <p>Note that the warning cannot specify the name of the class, field or method being accessed by the Reflection API call if it is unresolved.</p>
+        <p>If you get such an unresolved warning, you should go to the method concerned and satisfy yourself that the Reflection API call will not be broken by name obfuscation.</p>
+        <p>So you need to work out which class, field or method is being accessed by the Reflection API call and then determine whether the accessed class, field or method is being renamed.</p>
+        <p>If a Reflection API call would be broken by the obfuscation of a class, field or method name then that class, field or method name should be explicitly excluded from name obfuscation.</p>
+        <p>If you decide to use Zelix KlassMaster's Trim functionality then the same exclusions should also appear in a ZKM Script trimExclude statement so that Zelix KlassMaster's can satisfactorily trace all accesses.</p>
+        <p>However, also note that any warnings pertaining to java.lang.Class.getName() calls will only be a problem if</p>
+        <p>So, if the value returned by java.lang.Class.getName() is simply output for debugging purposes (which is normally the case) then there will be no problem.</p>
+        <p>However, if the returned value is used in a way that satisfies the above three conditions then the name of the class or classes that the return value is being compared to will need to be excluded from obfuscation.</p>
+        <p>You can suppress these warnings by setting the ZKM_REFLECTION_WARNINGS system property to "false". One way of doing this is to use a command line like the following.</p>
+        <p>java -D"ZKM_REFLECTION_WARNINGS=false" -jar ZKM.jar MyScript.txt</p>
+        <p>Note that you can also use Zelix KlassMaster(TM)'s AutoReflection(TM) functionality to automatically handle Java Reflection API calls.</p>
+        <p>See the answer to FAQ Question 11 above.</p>
+        <p>Zelix KlassMaster by default provides only limited support for the obfuscation of constructs that the Kotlin(TM) compiler puts into the Java bytecode that it generates.</p>
+        <p>Java bytecode generated from relatively simple Kotlin code might be obfuscated safely by adding ZKM Script</p>
+        <p>statements and an exclusion like the following.</p>
+        <p>//Specify removal of non-essential validity check methods</p>
+        <p>removeMethodCallsInclude kotlin.jvm.internal.Intrinsics throwUninitializedPropertyAccessException(java.lang.String) and kotlin.jvm.internal.Intrinsics checkExpressionValueIsNotNull(java.lang.Object, java.lang.String) and kotlin.jvm.internal.Intrinsics checkFieldIsNotNull(java.lang.Object, java.lang.String) and kotlin.jvm.internal.Intrinsics checkFieldIsNotNull(java.lang.Object, java.lang.String, java.lang.String) and kotlin.jvm.internal.Intrinsics checkNotNull(java.lang.Object) and kotlin.jvm.internal.Intrinsics checkNotNull(java.lang.Object, java.lang.String) and kotlin.jvm.internal.Intrinsics checkNotNullExpressionValue(java.lang.Object, java.lang.String) and kotlin.jvm.internal.Intrinsics checkNotNullParameter(java.lang.Object, java.lang.String) and kotlin.jvm.internal.Intrinsics checkParameterIsNotNull(java.lang.Object, java.lang.String) and kotlin.jvm.internal.Intrinsics checkReturnedValueIsNotNull(java.lang.Object, java.lang.String) and kotlin.jvm.internal.Intrinsics checkReturnedValueIsNotNull(java.lang.Object,java.lang.String,java.lang.String) ;</p>
+        <p>//"removeMethodCalls" statement should precede any "trim" or "obfuscate" statements.</p>
+        <p>exclude kotlin.* + and //exclude all classes, fields and methods in kotlin package kotlin.*.* + and //exclude all classes, fields and methods in kotlin sub-packages org.jetbrains.kotlin.* + and //exclude all classes, fields and methods in package org.jetbrains.kotlin.*.* + //exclude all classes, fields and methods in packages ;</p>
+        <p>If your Java bytecode is generated from very simple Kotlin code you might even be able to safely remove the Kotlin annotations entirely using the ZKM Script</p>
+        <p>setting. However by default this setting would remove ALL annotations.</p>
+        <p>statement to pevent some annotations from being removed as a result of this setting.</p>
+      </div>
     </section>
   </div>
 </template>
 
 <script setup lang="ts">
 import { useHead } from '@unhead/vue'
-const schema = [{"@context":"https://schema.org","@type":"WebPage","name":"Answers","url":"https://zkm-web.vercel.app/page/faq"}, {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why wont Zelix KlassMaster(TM) run?","acceptedAnswer":{"@type":"Answer","text":"You cannot run Zelix KlassMaster(TM) using a Java 7 or earier JVM. You need Java 8 (JDK 1.8 or better). Zelix KlassMaster(TM) may not run on your operating system. See the answer to Q4 ."}},{"@type":"Question","name":"Does Zelix KlassMaster(TM) support Java 8 through to Java 27?","acceptedAnswer":{"@type":"Answer","text":"Of course Zelix KlassMaster(TM) will also open and process Java 1.1 through to Java 8 bytecode. All you need to do is set the Zelix KlassMaster(TM) classpath to point to the appropriate bootstrap classes. For Java 2 through to Java 8 that is the corresponding rt.jar . For Java 9 to Java 27 it is the corresponding lib\\jrt-fs.jar file system."}},{"@type":"Question","name":"What is the difference between the evaluation and licensed versions of Zelix KlassMaster?","acceptedAnswer":{"@type":"Answer","text":"The evaluation version will flow obfuscate only one or two methods in each class. The evaluation version is time limited to thirty days."}},{"@type":"Question","name":"Will Zelix KlassMaster(TM) run in Windows, Mac OS X or Linux?","acceptedAnswer":{"@type":"Answer","text":"Windows 11(TM) 64bit using java version \"1.8.0_503\" Java HotSpot(TM) 64-Bit Server VM (build 25.503-b01, mixed mode) openjdk version \"1.8.0_504\" OpenJDK 64-Bit Server VM (Temurin)(build 25.504-b01, mixed mode) java version \"11.0.32.1\" 2026-08-18 LTS Java HotSpot(TM) 64-Bit Server VM 18.9 (build 11.0.32.1+1-LTS-5, mixed mode) java version \"17.0.20.1\" 2026-08-18 LTS Java HotSpot(TM) 64-Bit Server VM (build 17.0.20.1+1-LTS-4, mixed mode, sharing) java version \"21.0.12.1\" 2026-08-18 LTS Java HotSpot(TM) 64-Bit Server VM (build 21.0.12.1+1-LTS-4, mixed mode, sharing) java version \"25.0.4.1\" 2026-08-18 LTS Java HotSpot(TM) 64-Bit Server VM (build 25.0.4.1+1-LTS-5, mixed mode, sharing) openjdk version \"25.0.4.1\" 2026-08-18 LTS OpenJDK 64-Bit Server VM Temurin-25.0.4.1+1 (build 25.0.4.1+1-LTS, mix"}},{"@type":"Question","name":"Why don't all names change when I obfuscate?","acceptedAnswer":{"@type":"Answer","text":"The name is public or protected and your obfuscate options say that public or protected names shouldn't be changed. The name of a package scoped method is overridden to be protected or public in a subclass. If your obfuscate options say that protected or public method names shouldn't be changed then the overridden method name can't be changed without breaking the polymorphic link. The name of a method overrides a method in a superclass or implements a method in an interface but the superclass or interface hasn't been opened inside Zelix KlassMaster. In such cases the method name cannot be changed without breaking the polymorphic link."}},{"@type":"Question","name":"When changing a method name, why do I get the message \"New name clashes with a method in Class name \" when the class mentioned doesn't seem to be related to the class that defines the method?","acceptedAnswer":{"@type":"Answer","text":"already exists in a class already exists in a superclass or subclass so that a new polymorphic relationship would be created."}},{"@type":"Question","name":"After being obfuscated why does my code get the runtime errors \"ClassFormatError\", \"VerifyError\", \"NoClassDefFoundError\" or \"Can't find class Classname \"?","acceptedAnswer":{"@type":"Answer","text":"in JDK 1.1.7 or less, for applications run with the -verify switch in Java 2 or better by default unless you use the -Xverify:none switch is always switched on for Applets."}},{"@type":"Question","name":"Can Zelix KlassMaster(TM) automatically handle Java Reflection API calls?","acceptedAnswer":{"@type":"Answer","text":"If you choose not to use the AutoReflection(TM) functionality and If a particular Reflection API call is not handled automatically by Zelix KlassMaster(TM) and That will break the obfuscated application"}},{"@type":"Question","name":"When I open some classes why do I get the \"Class Open Warnings\" window?","acceptedAnswer":{"@type":"Answer","text":"Class.forName(String) Class.getField(String) Class.getMethod(String) Class.getDeclaredField(String) Class.getDeclaredMethod(String) Constructor.getName() ClassLoader.loadClass(String,boolean) ClassLoader.defineClass() ClassLoader.findSystemClass(String) ClassLoader.findLoadedClass(String) RMIClassLoader.loadClass(String) RMIClassLoader.loadClass(URL, String) LoaderHandler.loadClass(String) LoaderHandler.loadClass(URL, String) EventSetDescriptor(Class, String, Class, String) EventSetDescriptor(Class, String, Class, String[], String, String) EventSetDescriptor(Class, String, Class, String[], String, String, String) the class in which the Reflection API method call appears the signature of the method in which the Reflection API method call appears the signature of the Reflection API method be"}},{"@type":"Question","name":"When I open some classes why do I get the \"Class Open Errors\" window?","acceptedAnswer":{"@type":"Answer","text":"appear in the same archive or are not absolutely identical."}},{"@type":"Question","name":"What options should I use when obfuscating my classes?","acceptedAnswer":{"@type":"Answer","text":"not obfuscate public class names not obfuscate public field or method names not obfuscate public or protected field or method names limit String encryption by either using the \"normal\" setting or using the \"aggressive\", \"flowObfuscate\" or \"enhanced\" settings but excluding all interfaces from String encryption using the ZKM Script stringEncryptionExclude statement. (e.g. \" stringEncryptionExclude interface *.*;\" ) consider choosing the line numbers \"scramble\" option"}},{"@type":"Question","name":"What can I do if I get an OutOfMemoryError or \"Insufficient Memory to open classes\" error?","acceptedAnswer":{"@type":"Answer","text":"Give Java more memory to work with by using the -Xmx??m option where ?? represents the number of megabytes. (For example, the option -Xmx512m gives Java 512MB of heap space.) When you are running Zelix KlassMaster(TM) via Ant then you need to give more memory to Ant itself. An easy way of doing this is by setting the \"ANT_OPTS\" environment variable. e.g. set ANT_OPTS=-Xmx512m Use the \"Tools/Garbage Collect\" menu option or the gc ZKM Script statement after opening your classes and before obfuscating. Install more physical memory."}},{"@type":"Question","name":"Why does Zelix KlassMaster(TM) run so slowly?","acceptedAnswer":{"@type":"Answer","text":"Your computer may have insufficient real memory installed. If your computer has to use virtual memory performance will be very poor. You will notice that the hard disk is being very heavily utilized. You are obfuscating while viewing a very large class or method. This results in reduced performance due to the overhead of updating the class or method details in the View Panel."}},{"@type":"Question","name":"How do I obfuscate classes with native methods?","acceptedAnswer":{"@type":"Answer","text":"the names of the native methods themselves and the fully qualified names of the classes that contain them"}},{"@type":"Question","name":"Won't flow obfuscation slow down my code and make it bigger?","acceptedAnswer":{"@type":"Answer","text":"the bytecode that is being obfuscated, the JVM used to execute the bytecode, the flow obfuscation option used. use \"light\" flow obfuscation, use the ZKM Script obfuscateFlowExclude statement to exclude performance critical methods from flow obfuscation."}},{"@type":"Question","name":"After obfuscation, why don't my classes work properly?","acceptedAnswer":{"@type":"Answer","text":"You didn't open all your classes inside Zelix KlassMaster(TM) before obfuscating Your application Uses the Java(TM) Reflection API and Zelix KlassMaster(TM) has reported that there are some Reflection API calls in your bytecode that it may not be able to automatically handle and You didn't exclude the names of the classes, fields or methods that are accessed by those Reflection API calls. Upgrade to a more recent JIT. Of course it isn't always practical to ask your users to upgrade their JITs. JITs that are known to cause bugs with flow obfuscated bytecode are: Microsoft VMs earlier than 5.00.3167 Symantec JITs earlier than 3.00.072b. some of the IBM 1.3 JVMs If you obfuscated with \"aggressive\" flow obfuscation, try the \"normal\" setting. If you obfuscated with \"normal\" flow obfuscation, tr"}},{"@type":"Question","name":"What does the message \"WARNING: changeLogIn fileName : Method oldMethodName in class className1 is mapped to new name newMethodName1 but the corresponding method in class className2 is mapped to new name newMethodName2 . Using mapping of newMethodName2 for both methods\" mean?","acceptedAnswer":{"@type":"Answer","text":"you have directly edited the change log file and make some mistakes or your application has changed so that there are now polymorphic relationships between two or more methods that where previously unrelated."}},{"@type":"Question","name":"How does the Input Change Log functionality interact with the name exclusion functionality?","acceptedAnswer":{"@type":"Answer","text":"the input change log contains inconsistent or conflicting information. For example if it contains duplicate new package, class, field or method names contains fully qualified new class names that conflict with the corresponding new package name the input change log contains information that cannot be validly applied to the opened classes. For example if it would incorrectly make or break a polymorphic relationship between methods."}},{"@type":"Question","name":"If I exclude a class from being obfuscated will the class's methods still be obfuscated?","acceptedAnswer":{"@type":"Answer","text":"on the obfuscation of that class's field and method names or on the flow obfuscation or String encryption of any of its methods. To exclude methods from flow obfuscation you must use the ZKM Script obfuscateFlowExclude statement. To exclude String literals from encryption you must use the ZKM Script stringEncryptionExclude statement."}},{"@type":"Question","name":"My application will consist of a client jar file and server jar file which share some common classes. How do I obfuscate it?","acceptedAnswer":{"@type":"Answer","text":"Initially obfuscate your client and server jar files together in one pass generating an overall change log. If you make changes to only one of the jar files then obfuscate both your client and server jar files together in one pass once more using the change log generated in the step above as an input change log. Release just the changed jar. Use the change log generated in the second step as the new overall change log."}},{"@type":"Question","name":"Does Zelix KlassMaster(TM) support incremental obfuscation?","acceptedAnswer":{"@type":"Answer","text":"consistent package, class, field and method renaming and consistent flow obfuscation"}},{"@type":"Question","name":"Our application uses Java Serialization. How does this impact obfuscation?","acceptedAnswer":{"@type":"Answer","text":"add name exclusions for the fully qualified name of the class the name of every field contained or inherited by the class the fully qualified class name of the type of each non-primitive field contained or inherited by the class add a serialVersionUID field to the class (if it doesn't already exist) set to a value based upon the non-obfuscated class definition."}},{"@type":"Question","name":"Does Zelix KlassMaster(TM) support ResourceBundles as used in Localization and Internationalization?","acceptedAnswer":{"@type":"Answer","text":"Has a name containing an unqualified class name (e.g. \"pack1.pack2. MyClass0 .properties\") and The name of the class is used to get the name of the resource bundle (e.g. \" ResourceBundle.getBundle(getClass().getName()) \") package1.Class1_de_DE , package1.Class1_fr and package1.Class1_fr_CH"}},{"@type":"Question","name":"By how much will parallel processing reduce obfuscation time?","acceptedAnswer":{"@type":"Answer","text":"The obfuscation options that have been selected, The number of processors that are available and The amount of heap space that is available."}},{"@type":"Question","name":"What do the \"API warnings detected during open\" or \"API calls detected that may not be handled automatically\" messages mean?","acceptedAnswer":{"@type":"Answer","text":"The name of the class being obfuscated which contains the unresolved Reflection API call, The name of the method being obfuscated which contains the unresolved Reflection API call and The signature the Reflection API call. The String returned by java.lang.Class.getName() is compared to another String containing a class name AND The second String is not effectively a String literal containing a full class name AND The class which has its named stored in the second String will have its name obfuscated."}},{"@type":"Question","name":"Does Zelix KlassMaster(TM) support Java bytecode generated from Kotlin(TM) source?","acceptedAnswer":{"@type":"Answer","text":"What does the message \"WARNING: changeLogIn fileName : Method oldMethodName in class className1 is mapped to new name newMethodName1 but the corresponding method in class className2 is mapped to new name newMethodName2 . Using mapping of newMethodName2 for both methods\" mean? It is recommended that you initially use the GUI Build Helper tool to get a feeling for the processing sequence and then to create your first ZKM Script . It is also highly recommended that you at least read the basic exclusions part of the ZKM Script Exclusions Tutorial before modifying your first ZKM Scripts. See the Getting Started page of the documentation for more detail. If you are not getting a useful error message, try running with the -verify and -verbose switches of the JVM. Yes. Although, Zelix KlassMaster("}}]}]
-useHead({ title: 'Java Obfuscator - Zelix KlassMaster(TM) - FAQ | Zelix KlassMaster', meta: [{ name: 'description', content: 'Complete local copy of this Zelix KlassMaster reference page.' }, { property: 'og:image', content: 'https://zkm-web.vercel.app/og/reference.png' }], link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/page/faq' }], script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }] })
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Answers",
+    "url": "https://zkm-web.vercel.app/page/faq"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://zkm-web.vercel.app/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Reference",
+        "item": "https://zkm-web.vercel.app/reference"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Answers"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Why wont Zelix KlassMaster(TM) run?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You cannot run Zelix KlassMaster(TM) using a Java 7 or earier JVM. You need Java 8 (JDK 1.8 or better). Zelix KlassMaster(TM) may not run on your operating system. See the answer to Q4 ."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Zelix KlassMaster(TM) support Java 8 through to Java 27?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Of course Zelix KlassMaster(TM) will also open and process Java 1.1 through to Java 8 bytecode. All you need to do is set the Zelix KlassMaster(TM) classpath to point to the appropriate bootstrap classes. For Java 2 through to Java 8 that is the corresponding rt.jar . For Java 9 to Java 27 it is the corresponding lib\\jrt-fs.jar file system."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between the evaluation and licensed versions of Zelix KlassMaster?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The evaluation version will flow obfuscate only one or two methods in each class. The evaluation version is time limited to thirty days."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Will Zelix KlassMaster(TM) run in Windows, Mac OS X or Linux?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Windows 11(TM) 64bit using java version \"1.8.0_503\" Java HotSpot(TM) 64-Bit Server VM (build 25.503-b01, mixed mode) openjdk version \"1.8.0_504\" OpenJDK 64-Bit Server VM (Temurin)(build 25.504-b01, mixed mode) java version \"11.0.32.1\" 2026-08-18 LTS Java HotSpot(TM) 64-Bit Server VM 18.9 (build 11.0.32.1+1-LTS-5, mixed mode) java version \"17.0.20.1\" 2026-08-18 LTS Java HotSpot(TM) 64-Bit Server VM (build 17.0.20.1+1-LTS-4, mixed mode, sharing) java version \"21.0.12.1\" 2026-08-18 LTS Java HotSpot(TM) 64-Bit Server VM (build 21.0.12.1+1-LTS-4, mixed mode, sharing) java version \"25.0.4.1\" 2026-08-18 LTS Java HotSpot(TM) 64-Bit Server VM (build 25.0.4.1+1-LTS-5, mixed mode, sharing) openjdk version \"25.0.4.1\" 2026-08-18 LTS OpenJDK 64-Bit Server VM Temurin-25.0.4.1+1 (build 25.0.4.1+1-LTS, mix"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why don't all names change when I obfuscate?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The name is public or protected and your obfuscate options say that public or protected names shouldn't be changed. The name of a package scoped method is overridden to be protected or public in a subclass. If your obfuscate options say that protected or public method names shouldn't be changed then the overridden method name can't be changed without breaking the polymorphic link. The name of a method overrides a method in a superclass or implements a method in an interface but the superclass or interface hasn't been opened inside Zelix KlassMaster. In such cases the method name cannot be changed without breaking the polymorphic link."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "When changing a method name, why do I get the message \"New name clashes with a method in Class name \" when the class mentioned doesn't seem to be related to the class that defines the method?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "already exists in a class already exists in a superclass or subclass so that a new polymorphic relationship would be created."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "After being obfuscated why does my code get the runtime errors \"ClassFormatError\", \"VerifyError\", \"NoClassDefFoundError\" or \"Can't find class Classname \"?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "in JDK 1.1.7 or less, for applications run with the -verify switch in Java 2 or better by default unless you use the -Xverify:none switch is always switched on for Applets."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can Zelix KlassMaster(TM) automatically handle Java Reflection API calls?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "If you choose not to use the AutoReflection(TM) functionality and If a particular Reflection API call is not handled automatically by Zelix KlassMaster(TM) and That will break the obfuscated application"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "When I open some classes why do I get the \"Class Open Warnings\" window?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Class.forName(String) Class.getField(String) Class.getMethod(String) Class.getDeclaredField(String) Class.getDeclaredMethod(String) Constructor.getName() ClassLoader.loadClass(String,boolean) ClassLoader.defineClass() ClassLoader.findSystemClass(String) ClassLoader.findLoadedClass(String) RMIClassLoader.loadClass(String) RMIClassLoader.loadClass(URL, String) LoaderHandler.loadClass(String) LoaderHandler.loadClass(URL, String) EventSetDescriptor(Class, String, Class, String) EventSetDescriptor(Class, String, Class, String[], String, String) EventSetDescriptor(Class, String, Class, String[], String, String, String) the class in which the Reflection API method call appears the signature of the method in which the Reflection API method call appears the signature of the Reflection API method be"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "When I open some classes why do I get the \"Class Open Errors\" window?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "appear in the same archive or are not absolutely identical."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What options should I use when obfuscating my classes?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "not obfuscate public class names not obfuscate public field or method names not obfuscate public or protected field or method names limit String encryption by either using the \"normal\" setting or using the \"aggressive\", \"flowObfuscate\" or \"enhanced\" settings but excluding all interfaces from String encryption using the ZKM Script stringEncryptionExclude statement. (e.g. \" stringEncryptionExclude interface *.*;\" ) consider choosing the line numbers \"scramble\" option"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What can I do if I get an OutOfMemoryError or \"Insufficient Memory to open classes\" error?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Give Java more memory to work with by using the -Xmx??m option where ?? represents the number of megabytes. (For example, the option -Xmx512m gives Java 512MB of heap space.) When you are running Zelix KlassMaster(TM) via Ant then you need to give more memory to Ant itself. An easy way of doing this is by setting the \"ANT_OPTS\" environment variable. e.g. set ANT_OPTS=-Xmx512m Use the \"Tools/Garbage Collect\" menu option or the gc ZKM Script statement after opening your classes and before obfuscating. Install more physical memory."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does Zelix KlassMaster(TM) run so slowly?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Your computer may have insufficient real memory installed. If your computer has to use virtual memory performance will be very poor. You will notice that the hard disk is being very heavily utilized. You are obfuscating while viewing a very large class or method. This results in reduced performance due to the overhead of updating the class or method details in the View Panel."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I obfuscate classes with native methods?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "the names of the native methods themselves and the fully qualified names of the classes that contain them"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Won't flow obfuscation slow down my code and make it bigger?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "the bytecode that is being obfuscated, the JVM used to execute the bytecode, the flow obfuscation option used. use \"light\" flow obfuscation, use the ZKM Script obfuscateFlowExclude statement to exclude performance critical methods from flow obfuscation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "After obfuscation, why don't my classes work properly?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You didn't open all your classes inside Zelix KlassMaster(TM) before obfuscating Your application Uses the Java(TM) Reflection API and Zelix KlassMaster(TM) has reported that there are some Reflection API calls in your bytecode that it may not be able to automatically handle and You didn't exclude the names of the classes, fields or methods that are accessed by those Reflection API calls. Upgrade to a more recent JIT. Of course it isn't always practical to ask your users to upgrade their JITs. JITs that are known to cause bugs with flow obfuscated bytecode are: Microsoft VMs earlier than 5.00.3167 Symantec JITs earlier than 3.00.072b. some of the IBM 1.3 JVMs If you obfuscated with \"aggressive\" flow obfuscation, try the \"normal\" setting. If you obfuscated with \"normal\" flow obfuscation, tr"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does the message \"WARNING: changeLogIn fileName : Method oldMethodName in class className1 is mapped to new name newMethodName1 but the corresponding method in class className2 is mapped to new name newMethodName2 . Using mapping of newMethodName2 for both methods\" mean?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "you have directly edited the change log file and make some mistakes or your application has changed so that there are now polymorphic relationships between two or more methods that where previously unrelated."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does the Input Change Log functionality interact with the name exclusion functionality?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "the input change log contains inconsistent or conflicting information. For example if it contains duplicate new package, class, field or method names contains fully qualified new class names that conflict with the corresponding new package name the input change log contains information that cannot be validly applied to the opened classes. For example if it would incorrectly make or break a polymorphic relationship between methods."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "If I exclude a class from being obfuscated will the class's methods still be obfuscated?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "on the obfuscation of that class's field and method names or on the flow obfuscation or String encryption of any of its methods. To exclude methods from flow obfuscation you must use the ZKM Script obfuscateFlowExclude statement. To exclude String literals from encryption you must use the ZKM Script stringEncryptionExclude statement."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "My application will consist of a client jar file and server jar file which share some common classes. How do I obfuscate it?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Initially obfuscate your client and server jar files together in one pass generating an overall change log. If you make changes to only one of the jar files then obfuscate both your client and server jar files together in one pass once more using the change log generated in the step above as an input change log. Release just the changed jar. Use the change log generated in the second step as the new overall change log."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Zelix KlassMaster(TM) support incremental obfuscation?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "consistent package, class, field and method renaming and consistent flow obfuscation"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Our application uses Java Serialization. How does this impact obfuscation?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "add name exclusions for the fully qualified name of the class the name of every field contained or inherited by the class the fully qualified class name of the type of each non-primitive field contained or inherited by the class add a serialVersionUID field to the class (if it doesn't already exist) set to a value based upon the non-obfuscated class definition."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Zelix KlassMaster(TM) support ResourceBundles as used in Localization and Internationalization?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Has a name containing an unqualified class name (e.g. \"pack1.pack2. MyClass0 .properties\") and The name of the class is used to get the name of the resource bundle (e.g. \" ResourceBundle.getBundle(getClass().getName()) \") package1.Class1_de_DE , package1.Class1_fr and package1.Class1_fr_CH"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "By how much will parallel processing reduce obfuscation time?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The obfuscation options that have been selected, The number of processors that are available and The amount of heap space that is available."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What do the \"API warnings detected during open\" or \"API calls detected that may not be handled automatically\" messages mean?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The name of the class being obfuscated which contains the unresolved Reflection API call, The name of the method being obfuscated which contains the unresolved Reflection API call and The signature the Reflection API call. The String returned by java.lang.Class.getName() is compared to another String containing a class name AND The second String is not effectively a String literal containing a full class name AND The class which has its named stored in the second String will have its name obfuscated."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Zelix KlassMaster(TM) support Java bytecode generated from Kotlin(TM) source?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "What does the message \"WARNING: changeLogIn fileName : Method oldMethodName in class className1 is mapped to new name newMethodName1 but the corresponding method in class className2 is mapped to new name newMethodName2 . Using mapping of newMethodName2 for both methods\" mean? It is recommended that you initially use the GUI Build Helper tool to get a feeling for the processing sequence and then to create your first ZKM Script . It is also highly recommended that you at least read the basic exclusions part of the ZKM Script Exclusions Tutorial before modifying your first ZKM Scripts. See the Getting Started page of the documentation for more detail. If you are not getting a useful error message, try running with the -verify and -verbose switches of the JVM. Yes. Although, Zelix KlassMaster("
+        }
+      }
+    ]
+  }
+]
+useHead({
+  title: 'Answers | Zelix KlassMaster',
+  meta: [{ name: 'description', content: 'Answers | Zelix KlassMaster' },
+    { property: 'og:image', content: 'https://zkm-web.vercel.app/og/reference.png' }
+  ],
+  link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/page/faq' }],
+  script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }]
+})
 </script>

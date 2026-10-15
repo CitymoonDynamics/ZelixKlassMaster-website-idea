@@ -13,7 +13,7 @@
           <li>Contact our customer support team at within 14 days of your purchase.</li>
           <li>Provide your order number, the reason for the refund, and any relevant details regarding your experience with the software.</li>
         </ul>
-        <h3>3. Refund Process</h3>
+        <h2>3. Refund Process</h2>
         <ul>
           <li>Review your request and may reach out for additional information if needed.</li>
           <li>Initiate the refund process with the Merchant of Record within 24 hours of approval.</li>
@@ -32,6 +32,40 @@
 
 <script setup lang="ts">
 import { useHead } from '@unhead/vue'
-const schema = {"@context":"https://schema.org","@type":"WebPage","name":"Privacy Policy","url":"https://zkm-web.vercel.app/page/refunds"}
-useHead({ title: 'Privacy Policy | Zelix KlassMaster', meta: [{ name: 'description', content: 'Complete local copy of this Zelix KlassMaster reference page.' }, { property: 'og:image', content: 'https://zkm-web.vercel.app/og/reference.png' }], link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/page/refunds' }], script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }] })
+const schema = [{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Privacy Policy",
+  "url": "https://zkm-web.vercel.app/page/refunds"
+}, {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://zkm-web.vercel.app/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Reference",
+      "item": "https://zkm-web.vercel.app/reference"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Privacy Policy"
+    }
+  ]
+}]
+useHead({
+  title: 'Privacy Policy | Zelix KlassMaster2',
+  meta: [{ name: 'description', content: 'Privacy Policy | Zelix KlassMaster' },
+    { property: 'og:image', content: 'https://zkm-web.vercel.app/og/reference.png' }
+  ],
+  link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/page/refunds' }],
+  script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }]
+})
 </script>

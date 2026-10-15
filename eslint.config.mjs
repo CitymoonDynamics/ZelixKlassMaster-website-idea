@@ -30,6 +30,15 @@ export default tseslint.config(
     }
   },
   {
+    files: ['src/**/*.vue', 'src/**/*.ts'],
+    languageOptions: {
+      globals: {
+        window: 'readonly',
+        document: 'readonly'
+      }
+    }
+  },
+  {
     rules: {
       'vue/multi-word-component-names': 'off',
       'vue/no-v-html': 'error',

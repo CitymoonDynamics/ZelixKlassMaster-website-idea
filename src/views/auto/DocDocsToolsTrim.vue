@@ -13,7 +13,7 @@
           <li>automatic handling of references in XML, manifest and JAD files</li>
           <li>GUI basics</li>
         </ul>
-        <h3>Automatic handling of references in XML, manifest and JAD files</h3>
+        <h2>Automatic handling of references in XML, manifest and JAD files</h2>
         <h3>Detail</h3>
         <ul>
           <li>"Trim Exclusions"</li>
@@ -38,6 +38,40 @@
 
 <script setup lang="ts">
 import { useHead } from '@unhead/vue'
-const schema = {"@context":"https://schema.org","@type":"WebPage","name":"Automatic handling of references in XML, manifest and JAD files","url":"https://zkm-web.vercel.app/docs/toolsTrim"}
-useHead({ title: 'Java Obfuscator - Zelix KlassMaster(TM) - Trim | Zelix KlassMaster', meta: [{ name: 'description', content: 'Complete local copy of this Zelix KlassMaster reference page.' }, { property: 'og:image', content: 'https://zkm-web.vercel.app/og/docs.png' }], link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/docs/toolsTrim' }], script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }] })
+const schema = [{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Automatic handling of references in XML, manifest and JAD files",
+  "url": "https://zkm-web.vercel.app/docs/toolsTrim"
+}, {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://zkm-web.vercel.app/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Docs",
+      "item": "https://zkm-web.vercel.app/docs"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Automatic handling of references in XML, manifest and JAD files"
+    }
+  ]
+}]
+useHead({
+  title: 'Automatic handling of references in XML, manifest and J | Zelix KlassMaster',
+  meta: [{ name: 'description', content: 'Automatic handling of references in XML, manifest and JAD fi | Zelix KlassMaster' },
+    { property: 'og:image', content: 'https://zkm-web.vercel.app/og/docs.png' }
+  ],
+  link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/docs/toolsTrim' }],
+  script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }]
+})
 </script>

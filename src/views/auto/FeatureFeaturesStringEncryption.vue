@@ -56,6 +56,40 @@
 
 <script setup lang="ts">
 import { useHead } from '@unhead/vue'
-const schema = {"@context":"https://schema.org","@type":"WebPage","name":"Java Obfuscator - Zelix KlassMaster(TM) - Java String Encryption","url":"https://zkm-web.vercel.app/features/featuresStringEncryption"}
-useHead({ title: 'Java Obfuscator - Zelix KlassMaster(TM) - Java String Encryption | Zelix KlassMaster', meta: [{ name: 'description', content: 'Complete local copy of this Zelix KlassMaster reference page.' }, { property: 'og:image', content: 'https://zkm-web.vercel.app/og/features.png' }], link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/features/featuresStringEncryption' }], script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }] })
+const schema = [{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "String Encryption",
+  "url": "https://zkm-web.vercel.app/features/featuresStringEncryption"
+}, {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://zkm-web.vercel.app/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Features",
+      "item": "https://zkm-web.vercel.app/features"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "String Encryption"
+    }
+  ]
+}]
+useHead({
+  title: 'String Encryption | Zelix KlassMaster',
+  meta: [{ name: 'description', content: 'String Encryption | Zelix KlassMaster' },
+    { property: 'og:image', content: 'https://zkm-web.vercel.app/og/features.png' }
+  ],
+  link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/features/featuresStringEncryption' }],
+  script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }]
+})
 </script>

@@ -10,7 +10,7 @@
           <li>upgrade your Zelix KlassMaster(TM) version (i.e. upgrade to the latest version) or</li>
           <li>upgrade Zelix KlassMaster(TM) your license type (e.g. increase the number of machines covered by your license).</li>
         </ul>
-        <h3>Version Upgrade Policy</h3>
+        <h2>Version Upgrade Policy</h2>
         <ul>
           <li>you are entitled to a free upgrade to any subsequent minor release. So, if you license Zelix KlassMaster(TM) 27.0.0 then you are entitled to a free upgrade to versions 27.0.1, 27.0.2 and so on.</li>
           <li>you are entitled to a free upgrade to any major release that is released within three months of the purchase date.</li>
@@ -49,6 +49,40 @@
 
 <script setup lang="ts">
 import { useHead } from '@unhead/vue'
-const schema = {"@context":"https://schema.org","@type":"WebPage","name":"Version Upgrade Policy","url":"https://zkm-web.vercel.app/page/upgrades"}
-useHead({ title: 'Java Obfuscator - Zelix KlassMaster(TM) - Upgrades | Zelix KlassMaster', meta: [{ name: 'description', content: 'Complete local copy of this Zelix KlassMaster reference page.' }, { property: 'og:image', content: 'https://zkm-web.vercel.app/og/reference.png' }], link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/page/upgrades' }], script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }] })
+const schema = [{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Version Upgrade Policy",
+  "url": "https://zkm-web.vercel.app/page/upgrades"
+}, {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://zkm-web.vercel.app/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Reference",
+      "item": "https://zkm-web.vercel.app/reference"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Version Upgrade Policy"
+    }
+  ]
+}]
+useHead({
+  title: 'Version Upgrade Policy | Zelix KlassMaster',
+  meta: [{ name: 'description', content: 'Version Upgrade Policy | Zelix KlassMaster' },
+    { property: 'og:image', content: 'https://zkm-web.vercel.app/og/reference.png' }
+  ],
+  link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/page/upgrades' }],
+  script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }]
+})
 </script>

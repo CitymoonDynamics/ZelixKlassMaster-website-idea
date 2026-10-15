@@ -4,7 +4,6 @@
       <p class="muted">Docs</p>
       <h1>Zelix KlassMaster(TM) Main Browser Window</h1>
       <div class="panel">
-        <h2>Zelix KlassMaster(TM) Main Browser Window</h2>
         <p>The Zelix KlassMaster(TM) browser window contains five panes. The relative size of the</p>
         <p>Class Hierarchy Pane at the left and the</p>
         <p>View Pane at the bottom right can be adjusted by dragging the dark bar between the panes.</p>
@@ -15,6 +14,40 @@
 
 <script setup lang="ts">
 import { useHead } from '@unhead/vue'
-const schema = {"@context":"https://schema.org","@type":"WebPage","name":"Zelix KlassMaster(TM) Main Browser Window","url":"https://zkm-web.vercel.app/docs/mainFrame"}
-useHead({ title: 'Java Obfuscator - Zelix KlassMaster(TM) | Zelix KlassMaster', meta: [{ name: 'description', content: 'Complete local copy of this Zelix KlassMaster reference page.' }, { property: 'og:image', content: 'https://zkm-web.vercel.app/og/docs.png' }], link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/docs/mainFrame' }], script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }] })
+const schema = [{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Zelix KlassMaster(TM) Main Browser Window",
+  "url": "https://zkm-web.vercel.app/docs/mainFrame"
+}, {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://zkm-web.vercel.app/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Docs",
+      "item": "https://zkm-web.vercel.app/docs"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Zelix KlassMaster(TM) Main Browser Window"
+    }
+  ]
+}]
+useHead({
+  title: 'Zelix KlassMaster(TM) Main Browser Window | Zelix KlassMaster',
+  meta: [{ name: 'description', content: 'Zelix KlassMaster(TM) Main Browser Window | Zelix KlassMaster' },
+    { property: 'og:image', content: 'https://zkm-web.vercel.app/og/docs.png' }
+  ],
+  link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/docs/mainFrame' }],
+  script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }]
+})
 </script>

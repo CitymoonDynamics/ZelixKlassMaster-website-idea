@@ -4,8 +4,7 @@
       <p class="muted">Docs</p>
       <h1>Calling Zelix KlassMaster(TM) from Apache Maven</h1>
       <div class="panel">
-        <h2>Calling Zelix KlassMaster(TM) from Apache Maven</h2>
-        <h3>Apache Maven Example POM XML</h3>
+        <h2>Apache Maven Example POM XML</h2>
         <pre class="code"><code>&lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"&gt;
   &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
@@ -298,6 +297,40 @@ public class ZelixKlassMasterMojo extends AbstractMojo{
 
 <script setup lang="ts">
 import { useHead } from '@unhead/vue'
-const schema = {"@context":"https://schema.org","@type":"WebPage","name":"Calling Zelix KlassMaster(TM) from Apache Maven","url":"https://zkm-web.vercel.app/docs/buildToolMaven"}
-useHead({ title: 'Java Obfuscator - Zelix KlassMaster(TM) - Calling from Apache Maven | Zelix KlassMaster', meta: [{ name: 'description', content: 'Complete local copy of this Zelix KlassMaster reference page.' }, { property: 'og:image', content: 'https://zkm-web.vercel.app/og/docs.png' }], link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/docs/buildToolMaven' }], script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }] })
+const schema = [{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Calling Zelix KlassMaster(TM) from Apache Maven",
+  "url": "https://zkm-web.vercel.app/docs/buildToolMaven"
+}, {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://zkm-web.vercel.app/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Docs",
+      "item": "https://zkm-web.vercel.app/docs"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Calling Zelix KlassMaster(TM) from Apache Maven"
+    }
+  ]
+}]
+useHead({
+  title: 'Calling Zelix KlassMaster(TM) from Apache Maven | Zelix KlassMaster',
+  meta: [{ name: 'description', content: 'Calling Zelix KlassMaster(TM) from Apache Maven | Zelix KlassMaster' },
+    { property: 'og:image', content: 'https://zkm-web.vercel.app/og/docs.png' }
+  ],
+  link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/docs/buildToolMaven' }],
+  script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }]
+})
 </script>

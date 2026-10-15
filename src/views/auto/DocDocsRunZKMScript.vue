@@ -11,7 +11,7 @@
           <li>Basic Usage</li>
           <li>Special Configuration Options</li>
         </ul>
-        <h3>The options</h3>
+        <h2>The options</h2>
         <ul>
           <li>passed to Zelix KlassMaster(TM) using the JVM's -D&lt;key&gt;=&lt;value&gt; syntax. ( -D"&lt;key&gt;=&lt;value&gt;" in Windows)</li>
           <li>set as environmental variables provided the special ZKM_LOAD_ENV_VARIABLES=true environmental variable has also been set so that Zelix KlassMaster(TM) will load ALL environmental variables into System properties,</li>
@@ -95,6 +95,40 @@
 
 <script setup lang="ts">
 import { useHead } from '@unhead/vue'
-const schema = {"@context":"https://schema.org","@type":"WebPage","name":"Java Obfuscator - Zelix KlassMaster(TM) - Executing a ZKM Script","url":"https://zkm-web.vercel.app/docs/runZKMScript"}
-useHead({ title: 'Java Obfuscator - Zelix KlassMaster(TM) - Executing a ZKM Script | Zelix KlassMaster', meta: [{ name: 'description', content: 'Complete local copy of this Zelix KlassMaster reference page.' }, { property: 'og:image', content: 'https://zkm-web.vercel.app/og/docs.png' }], link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/docs/runZKMScript' }], script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }] })
+const schema = [{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Java Obfuscator - Zelix KlassMaster(TM) - Executing a ZKM Script",
+  "url": "https://zkm-web.vercel.app/docs/runZKMScript"
+}, {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://zkm-web.vercel.app/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Docs",
+      "item": "https://zkm-web.vercel.app/docs"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Java Obfuscator - Zelix KlassMaster(TM) - Executing a ZKM Script"
+    }
+  ]
+}]
+useHead({
+  title: 'Executing a ZKM Script | Zelix KlassMaster',
+  meta: [{ name: 'description', content: 'Java Obfuscator - Zelix KlassMaster(TM) - Executing a ZKM Sc | Zelix KlassMaster' },
+    { property: 'og:image', content: 'https://zkm-web.vercel.app/og/docs.png' }
+  ],
+  link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/docs/runZKMScript' }],
+  script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }]
+})
 </script>

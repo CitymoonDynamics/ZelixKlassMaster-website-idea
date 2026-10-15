@@ -20,7 +20,7 @@
           <li>27.0.l Corrects a bug in the processing of properties files which could cause a large properties file to be truncated.</li>
           <li>Enhances the Method Parameter Changing functionality to make some of its transformations more random.</li>
         </ul>
-        <h3>Version 26.0 release 0 (16 Mar 2026)</h3>
+        <h2>Version 26.0 release 0 (16 Mar 2026)</h2>
         <ul>
           <li>Preliminary release validating support for Java 26.</li>
           <li>Enhances the the classInitializationOrder statement so that it infers transitive relationships.</li>
@@ -1485,13 +1485,49 @@
         <p>Corrects a bug that caused a NullPointerException when opening classes that:</p>
         <p>contained at least one corrupt Inner Class Attribute table entry and</p>
         <p>contained at least one valid Inner Class Attribute table entry.</p>
-        <p>Note that, amongst other things, Zelix KlassMaster(TM) treats Inner Class Attribute table entries as corrupt if they contain inner class names that do not start with the outer class name followed by a '$' character.</p>      </div>
+        <p>Note that, amongst other things, Zelix KlassMaster(TM) treats Inner Class Attribute table entries as corrupt if they contain inner class names that do not start with the outer class name followed by a '$' character.</p>
+        <p>has improved (but still fallible) handling of bytecode containing calls to the method Class.forName().</p>
+      </div>
     </section>
   </div>
 </template>
 
 <script setup lang="ts">
 import { useHead } from '@unhead/vue'
-const schema = {"@context":"https://schema.org","@type":"WebPage","name":"Java Obfuscator - Zelix KlassMaster - Change History","url":"https://zkm-web.vercel.app/page/changes"}
-useHead({ title: 'Java Obfuscator - Zelix KlassMaster - Change History | Zelix KlassMaster', meta: [{ name: 'description', content: 'Complete local copy of this Zelix KlassMaster reference page.' }, { property: 'og:image', content: 'https://zkm-web.vercel.app/og/reference.png' }], link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/page/changes' }], script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }] })
+const schema = [{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Java Obfuscator - Zelix KlassMaster - Change History",
+  "url": "https://zkm-web.vercel.app/page/changes"
+}, {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://zkm-web.vercel.app/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Reference",
+      "item": "https://zkm-web.vercel.app/reference"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Java Obfuscator - Zelix KlassMaster - Change History"
+    }
+  ]
+}]
+useHead({
+  title: 'Change History | Zelix KlassMaster',
+  meta: [{ name: 'description', content: 'Java Obfuscator - Zelix KlassMaster - Change History | Zelix KlassMaster' },
+    { property: 'og:image', content: 'https://zkm-web.vercel.app/og/reference.png' }
+  ],
+  link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/page/changes' }],
+  script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }]
+})
 </script>

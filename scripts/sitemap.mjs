@@ -1,6 +1,9 @@
 import { writeFileSync, mkdirSync, readFileSync } from 'node:fs'
 
-const base = 'https://zkm-web.vercel.app'
+const SITE_URL = (readFileSync('.env', 'utf8').match(/^SITE_URL=(.+)$/m) || [])[1]?.trim()
+  ?? process.env.SITE_URL
+  ?? 'https://zkm-web.vercel.app'
+const base = SITE_URL
 const date = new Date().toISOString().slice(0, 10)
 const routes = ['', '/features', '/pricing', '/docs', '/support', '/contact', '/legal', '/sitemap',
   '/page/order', '/page/upgrades', '/page/support', '/page/faq', '/page/changes',

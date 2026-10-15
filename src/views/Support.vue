@@ -27,5 +27,6 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
 import { useHead } from '@unhead/vue'
-useHead({ title: 'Support and FAQ | Zelix KlassMaster', meta: [{ name: 'description', content: 'Zelix KlassMaster FAQ: Java 8 through 27, memory, Reflection, Android, Kotlin and build tools.' }, { property: 'og:image', content: 'https://zkm-web.vercel.app/og/support.png' }], link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/support' }] })
+import { SITE_URL } from '../site'
+useHead({ title: 'Support and FAQ | Zelix KlassMaster', meta: [{ name: 'description', content: 'Zelix KlassMaster FAQ: Java 8 through 27, memory, Reflection, Android, Kotlin and build tools.' }, { property: 'og:image', content: SITE_URL + '/og/support.png' }], link: [{ rel: 'canonical', href: SITE_URL + '/support' }] })
 </script>

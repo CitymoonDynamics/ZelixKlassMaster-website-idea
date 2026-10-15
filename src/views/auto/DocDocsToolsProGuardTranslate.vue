@@ -4,8 +4,7 @@
       <p class="muted">Docs</p>
       <h1>Tools | ProGuard Configuration Translate</h1>
       <div class="panel">
-        <h2>Tools | ProGuard Configuration Translate</h2>
-        <h3>Overview</h3>
+        <h2>Overview</h2>
         <h3>Basics</h3>
         <p>Java Obfuscator - Zelix KlassMaster(TM) - ProGuard Translate</p>
         <p>The "ProGuard Configuration Translate Tool" tool translates a ProGuard obfuscator configuration file into the equivalent ZKM Script file.</p>
@@ -26,6 +25,40 @@
 
 <script setup lang="ts">
 import { useHead } from '@unhead/vue'
-const schema = {"@context":"https://schema.org","@type":"WebPage","name":"Tools | ProGuard Configuration Translate","url":"https://zkm-web.vercel.app/docs/toolsProGuardTranslate"}
-useHead({ title: 'Java Obfuscator - Zelix KlassMaster(TM) - ProGuard Translate | Zelix KlassMaster', meta: [{ name: 'description', content: 'Complete local copy of this Zelix KlassMaster reference page.' }, { property: 'og:image', content: 'https://zkm-web.vercel.app/og/docs.png' }], link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/docs/toolsProGuardTranslate' }], script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }] })
+const schema = [{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Tools | ProGuard Configuration Translate",
+  "url": "https://zkm-web.vercel.app/docs/toolsProGuardTranslate"
+}, {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://zkm-web.vercel.app/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Docs",
+      "item": "https://zkm-web.vercel.app/docs"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Tools | ProGuard Configuration Translate"
+    }
+  ]
+}]
+useHead({
+  title: 'Tools | ProGuard Configuration Translate | Zelix KlassMaster',
+  meta: [{ name: 'description', content: 'Tools | ProGuard Configuration Translate | Zelix KlassMaster' },
+    { property: 'og:image', content: 'https://zkm-web.vercel.app/og/docs.png' }
+  ],
+  link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/docs/toolsProGuardTranslate' }],
+  script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }]
+})
 </script>

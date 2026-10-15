@@ -13,7 +13,7 @@
           <li>the obfuscated bytecode that generated the stack trace</li>
           <li>any supporting JAR files required by your obfuscated bytecode to run.</li>
         </ul>
-        <h3>Simple Stand Alone Example</h3>
+        <h2>Simple Stand Alone Example</h2>
         <pre class="code"><code>import com.zelix.ZKMStackTraceTranslate;
 
 ZKMStackTraceTranslate translator = new ZKMStackTraceTranslate("/projects/ChangeLog.txt", 
@@ -246,6 +246,40 @@ public class ZKMSimpleFormatter extends Formatter {
 
 <script setup lang="ts">
 import { useHead } from '@unhead/vue'
-const schema = {"@context":"https://schema.org","@type":"WebPage","name":"Java Obfuscator - Zelix KlassMaster(TM) - Stack Trace Translate","url":"https://zkm-web.vercel.app/docs/stackTraceTranslateApi"}
-useHead({ title: 'Java Obfuscator - Zelix KlassMaster(TM) - Stack Trace Translate | Zelix KlassMaster', meta: [{ name: 'description', content: 'Complete local copy of this Zelix KlassMaster reference page.' }, { property: 'og:image', content: 'https://zkm-web.vercel.app/og/docs.png' }], link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/docs/stackTraceTranslateApi' }], script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }] })
+const schema = [{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Java Obfuscator - Zelix KlassMaster(TM) - Stack Trace Translate",
+  "url": "https://zkm-web.vercel.app/docs/stackTraceTranslateApi"
+}, {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://zkm-web.vercel.app/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Docs",
+      "item": "https://zkm-web.vercel.app/docs"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Java Obfuscator - Zelix KlassMaster(TM) - Stack Trace Translate"
+    }
+  ]
+}]
+useHead({
+  title: 'Stack Trace Translate | Zelix KlassMaster',
+  meta: [{ name: 'description', content: 'Java Obfuscator - Zelix KlassMaster(TM) - Stack Trace Transl | Zelix KlassMaster' },
+    { property: 'og:image', content: 'https://zkm-web.vercel.app/og/docs.png' }
+  ],
+  link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/docs/stackTraceTranslateApi' }],
+  script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }]
+})
 </script>

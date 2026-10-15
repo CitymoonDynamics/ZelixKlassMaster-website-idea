@@ -33,7 +33,8 @@
 import { computed, ref } from 'vue'
 import { RouterLink } from 'vue-router'
 import { useHead } from '@unhead/vue'
-useHead({ title: 'Contact Sales | Zelix KlassMaster', meta: [{ name: 'description', content: 'Contact the Zelix KlassMaster sales and support team about licenses and upgrades.' }, { property: 'og:image', content: 'https://zkm-web.vercel.app/og/contact.png' }], link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/contact' }] })
+import { SITE_URL } from '../site'
+useHead({ title: 'Contact Sales | Zelix KlassMaster', meta: [{ name: 'description', content: 'Contact the Zelix KlassMaster sales and support team about licenses and upgrades.' }, { property: 'og:image', content: SITE_URL + '/og/contact.png' }], link: [{ rel: 'canonical', href: SITE_URL + '/contact' }] })
 const name = ref('')
 const email = ref('')
 const topic = ref('License purchase')

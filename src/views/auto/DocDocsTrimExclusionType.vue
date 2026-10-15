@@ -4,8 +4,7 @@
       <p class="muted">Docs</p>
       <h1>Trim Exclude Parameter Type</h1>
       <div class="panel">
-        <h2>Trim Exclude Parameter Type</h2>
-        <h3>Class exclusion parameters</h3>
+        <h2>Class exclusion parameters</h2>
         <h3>Field exclusion parameters</h3>
         <h3>Method exclusion parameters</h3>
         <p>The Trim Exclude Parameter Type window allows you to select the type of trim exclude parameter you wish to add. There are three kinds of trim exclusion parameter.</p>
@@ -24,6 +23,40 @@
 
 <script setup lang="ts">
 import { useHead } from '@unhead/vue'
-const schema = {"@context":"https://schema.org","@type":"WebPage","name":"Trim Exclude Parameter Type","url":"https://zkm-web.vercel.app/docs/trimExclusionType"}
-useHead({ title: 'Java Obfuscator - Zelix KlassMaster(TM) | Zelix KlassMaster', meta: [{ name: 'description', content: 'Complete local copy of this Zelix KlassMaster reference page.' }, { property: 'og:image', content: 'https://zkm-web.vercel.app/og/docs.png' }], link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/docs/trimExclusionType' }], script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }] })
+const schema = [{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Trim Exclude Parameter Type",
+  "url": "https://zkm-web.vercel.app/docs/trimExclusionType"
+}, {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://zkm-web.vercel.app/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Docs",
+      "item": "https://zkm-web.vercel.app/docs"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Trim Exclude Parameter Type"
+    }
+  ]
+}]
+useHead({
+  title: 'Trim Exclude Parameter Type | Zelix KlassMaster',
+  meta: [{ name: 'description', content: 'Trim Exclude Parameter Type | Zelix KlassMaster' },
+    { property: 'og:image', content: 'https://zkm-web.vercel.app/og/docs.png' }
+  ],
+  link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/docs/trimExclusionType' }],
+  script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }]
+})
 </script>

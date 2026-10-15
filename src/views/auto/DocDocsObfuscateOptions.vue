@@ -30,7 +30,7 @@
           <li>Preverify</li>
           <li>Default exclusions</li>
         </ul>
-        <h3>Obfuscate Control Flow</h3>
+        <h2>Obfuscate Control Flow</h2>
         <ul>
           <li>the bytecode that is being obfuscated,</li>
           <li>the JVM used to execute the bytecode,</li>
@@ -211,6 +211,40 @@
 
 <script setup lang="ts">
 import { useHead } from '@unhead/vue'
-const schema = {"@context":"https://schema.org","@type":"WebPage","name":"Obfuscate Control Flow","url":"https://zkm-web.vercel.app/docs/obfuscateOptions"}
-useHead({ title: 'Java Obfuscator - Zelix KlassMaster(TM) - Obfuscate Options | Zelix KlassMaster', meta: [{ name: 'description', content: 'Complete local copy of this Zelix KlassMaster reference page.' }, { property: 'og:image', content: 'https://zkm-web.vercel.app/og/docs.png' }], link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/docs/obfuscateOptions' }], script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }] })
+const schema = [{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Obfuscate Control Flow",
+  "url": "https://zkm-web.vercel.app/docs/obfuscateOptions"
+}, {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://zkm-web.vercel.app/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Docs",
+      "item": "https://zkm-web.vercel.app/docs"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Obfuscate Control Flow"
+    }
+  ]
+}]
+useHead({
+  title: 'Obfuscate Control Flow | Zelix KlassMaster',
+  meta: [{ name: 'description', content: 'Obfuscate Control Flow | Zelix KlassMaster' },
+    { property: 'og:image', content: 'https://zkm-web.vercel.app/og/docs.png' }
+  ],
+  link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/docs/obfuscateOptions' }],
+  script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }]
+})
 </script>

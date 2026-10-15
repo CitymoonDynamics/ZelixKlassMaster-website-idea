@@ -4,8 +4,7 @@
       <p class="muted">Reference</p>
       <h1>License Agreement.</h1>
       <div class="panel">
-        <h2>License Agreement.</h2>
-        <h3>1. License, Ownership and Use.</h3>
+        <h2>1. License, Ownership and Use.</h2>
         <h3>2. Copying and Distribution.</h3>
         <h3>3. Warranty Disclaimer and Limitation of Liability</h3>
         <h3>4. Severability.</h3>
@@ -34,6 +33,40 @@
 
 <script setup lang="ts">
 import { useHead } from '@unhead/vue'
-const schema = {"@context":"https://schema.org","@type":"WebPage","name":"License Agreement.","url":"https://zkm-web.vercel.app/page/license"}
-useHead({ title: 'Java Obfuscator - Zelix KlassMaster(TM) | Zelix KlassMaster', meta: [{ name: 'description', content: 'Complete local copy of this Zelix KlassMaster reference page.' }, { property: 'og:image', content: 'https://zkm-web.vercel.app/og/reference.png' }], link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/page/license' }], script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }] })
+const schema = [{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "License Agreement.",
+  "url": "https://zkm-web.vercel.app/page/license"
+}, {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://zkm-web.vercel.app/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Reference",
+      "item": "https://zkm-web.vercel.app/reference"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "License Agreement."
+    }
+  ]
+}]
+useHead({
+  title: 'License Agreement. | Zelix KlassMaster',
+  meta: [{ name: 'description', content: 'License Agreement. | Zelix KlassMaster' },
+    { property: 'og:image', content: 'https://zkm-web.vercel.app/og/reference.png' }
+  ],
+  link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/page/license' }],
+  script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }]
+})
 </script>

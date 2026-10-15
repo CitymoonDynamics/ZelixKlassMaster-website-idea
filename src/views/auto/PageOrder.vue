@@ -31,7 +31,7 @@
           <li>Five machine license .</li>
           <li>Site license .</li>
         </ul>
-        <h3>Questions?</h3>
+        <h2>Questions?</h2>
         <p>Zelix KlassMaster(TM) is licensed on either a machine or a site basis. One standard license allows you to run Zelix KlassMaster(TM) on one machine.</p>
         <p>So you need to purchase a license for each machine on which Zelix KlassMaster(TM) will be run.</p>
         <p>On the other hand, a site license allows you to use Zelix KlassMaster(TM) on any number of machines at one physical location.</p>
@@ -57,6 +57,40 @@
 
 <script setup lang="ts">
 import { useHead } from '@unhead/vue'
-const schema = {"@context":"https://schema.org","@type":"WebPage","name":"Java Obfuscator - Zelix KlassMaster(TM) - Buy It","url":"https://zkm-web.vercel.app/page/order"}
-useHead({ title: 'Java Obfuscator - Zelix KlassMaster(TM) - Buy It | Zelix KlassMaster', meta: [{ name: 'description', content: 'Complete local copy of this Zelix KlassMaster reference page.' }, { property: 'og:image', content: 'https://zkm-web.vercel.app/og/reference.png' }], link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/page/order' }], script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }] })
+const schema = [{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Java Obfuscator - Zelix KlassMaster(TM) - Buy It",
+  "url": "https://zkm-web.vercel.app/page/order"
+}, {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://zkm-web.vercel.app/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Reference",
+      "item": "https://zkm-web.vercel.app/reference"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Java Obfuscator - Zelix KlassMaster(TM) - Buy It"
+    }
+  ]
+}]
+useHead({
+  title: 'Buy It | Zelix KlassMaster',
+  meta: [{ name: 'description', content: 'Java Obfuscator - Zelix KlassMaster(TM) - Buy It | Zelix KlassMaster' },
+    { property: 'og:image', content: 'https://zkm-web.vercel.app/og/reference.png' }
+  ],
+  link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/page/order' }],
+  script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }]
+})
 </script>

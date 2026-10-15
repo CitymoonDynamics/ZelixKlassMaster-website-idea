@@ -10,7 +10,7 @@
           <li>directly or indirectly extended or implemented by the classes you have opened,</li>
           <li>that are specified in the signatures of any methods in the classes you have opened.</li>
         </ul>
-        <h3>Multi-release JAR files</h3>
+        <h2>Multi-release JAR files</h2>
         <h3>Examples</h3>
         <h3>In the Windows(TM) environments</h3>
         <pre class="code"><code>classpath "." 
@@ -85,6 +85,40 @@ classpath 10 "/opt/jdk1.10.0/lib/jrt-fs.jar";</code></pre>
 
 <script setup lang="ts">
 import { useHead } from '@unhead/vue'
-const schema = {"@context":"https://schema.org","@type":"WebPage","name":"Multi-release JAR files","url":"https://zkm-web.vercel.app/docs/classpathStatement"}
-useHead({ title: 'Java Obfuscator - Zelix KlassMaster(TM) - classpath | Zelix KlassMaster', meta: [{ name: 'description', content: 'Complete local copy of this Zelix KlassMaster reference page.' }, { property: 'og:image', content: 'https://zkm-web.vercel.app/og/docs.png' }], link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/docs/classpathStatement' }], script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }] })
+const schema = [{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Multi-release JAR files",
+  "url": "https://zkm-web.vercel.app/docs/classpathStatement"
+}, {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://zkm-web.vercel.app/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Docs",
+      "item": "https://zkm-web.vercel.app/docs"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Multi-release JAR files"
+    }
+  ]
+}]
+useHead({
+  title: 'Multi-release JAR files | Zelix KlassMaster',
+  meta: [{ name: 'description', content: 'Multi-release JAR files | Zelix KlassMaster' },
+    { property: 'og:image', content: 'https://zkm-web.vercel.app/og/docs.png' }
+  ],
+  link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/docs/classpathStatement' }],
+  script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }]
+})
 </script>

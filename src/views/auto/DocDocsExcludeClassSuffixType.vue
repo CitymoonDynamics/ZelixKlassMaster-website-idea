@@ -14,7 +14,7 @@
           <li>RMI (e.g. the _Stub and _Skel suffixes) and</li>
           <li>Java Beans (e.g. the BeanInfo and Customizer suffixes) scenarios.</li>
         </ul>
-        <h3>The class itself</h3>
+        <h2>The class itself</h2>
         <ul>
           <li>its suffix</li>
           <li>the fully qualified name of its superclass</li>
@@ -48,6 +48,40 @@
 
 <script setup lang="ts">
 import { useHead } from '@unhead/vue'
-const schema = {"@context":"https://schema.org","@type":"WebPage","name":"Java Obfuscator - Zelix KlassMaster(TM)","url":"https://zkm-web.vercel.app/docs/excludeClassSuffixType"}
-useHead({ title: 'Java Obfuscator - Zelix KlassMaster(TM) | Zelix KlassMaster', meta: [{ name: 'description', content: 'Complete local copy of this Zelix KlassMaster reference page.' }, { property: 'og:image', content: 'https://zkm-web.vercel.app/og/docs.png' }], link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/docs/excludeClassSuffixType' }], script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }] })
+const schema = [{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Java Obfuscator - Zelix KlassMaster(TM)",
+  "url": "https://zkm-web.vercel.app/docs/excludeClassSuffixType"
+}, {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://zkm-web.vercel.app/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Docs",
+      "item": "https://zkm-web.vercel.app/docs"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Java Obfuscator - Zelix KlassMaster(TM)"
+    }
+  ]
+}]
+useHead({
+  title: 'Java Obfuscator - Zelix KlassMaster(TM) | Zelix KlassMaster2',
+  meta: [{ name: 'description', content: 'Java Obfuscator - Zelix KlassMaster(TM) | Zelix KlassMaster' },
+    { property: 'og:image', content: 'https://zkm-web.vercel.app/og/docs.png' }
+  ],
+  link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/docs/excludeClassSuffixType' }],
+  script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }]
+})
 </script>

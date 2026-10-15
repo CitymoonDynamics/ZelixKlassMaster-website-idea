@@ -10,7 +10,7 @@
           <li>If the preverification is done automatically by an IDE then the IDE usually requires a special obfuscation plugin that it can call between its compile and preverification steps. Unfortunately, obfuscation plugins can limit the obfuscation options available to you.</li>
           <li>If the preverification is done by a utility then that utility may not open classes from a JAR file. This can complicate your build process.</li>
         </ul>
-        <h3>Obfuscating after preverification</h3>
+        <h2>Obfuscating after preverification</h2>
         <h3>Obfuscating before preverification</h3>
         <h3>Suggested options</h3>
         <ul>
@@ -47,6 +47,40 @@
 
 <script setup lang="ts">
 import { useHead } from '@unhead/vue'
-const schema = {"@context":"https://schema.org","@type":"WebPage","name":"Obfuscating after preverification","url":"https://zkm-web.vercel.app/docs/jmeTutorial"}
-useHead({ title: 'Java Obfuscator - Zelix KlassMaster(TM) - Java ME Tutorial | Zelix KlassMaster', meta: [{ name: 'description', content: 'Complete local copy of this Zelix KlassMaster reference page.' }, { property: 'og:image', content: 'https://zkm-web.vercel.app/og/docs.png' }], link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/docs/jmeTutorial' }], script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }] })
+const schema = [{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Obfuscating after preverification",
+  "url": "https://zkm-web.vercel.app/docs/jmeTutorial"
+}, {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://zkm-web.vercel.app/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Docs",
+      "item": "https://zkm-web.vercel.app/docs"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Obfuscating after preverification"
+    }
+  ]
+}]
+useHead({
+  title: 'Obfuscating after preverification | Zelix KlassMaster',
+  meta: [{ name: 'description', content: 'Obfuscating after preverification | Zelix KlassMaster' },
+    { property: 'og:image', content: 'https://zkm-web.vercel.app/og/docs.png' }
+  ],
+  link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/docs/jmeTutorial' }],
+  script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }]
+})
 </script>

@@ -13,6 +13,7 @@ trim;</code></pre>
       </div>
       <div class="panel" style="margin-top: 20px;">
         <h2>Complete Local Copy</h2>
+        <h3>Trim</h3>
         <p>Java Obfuscator - Zelix KlassMaster(TM) - Trim</p>
         <p>The Zelix KlassMaster(TM) trim tool can reduce the size of your application by removing the unused classes, fields and methods and the unnecessary bytecode attributes.</p>
         <p>If your application is distributed with a third party library or your own general purpose utility classes then the number of classes, fields and methods that are not actually used could be quite significant.</p>
@@ -27,6 +28,40 @@ trim;</code></pre>
 
 <script setup lang="ts">
 import { useHead } from '@unhead/vue'
-const schema = {"@context":"https://schema.org","@type":"WebPage","name":"Trim","url":"https://zkm-web.vercel.app/features/featuresTrim"}
-useHead({ title: 'Java Obfuscator - Zelix KlassMaster(TM) - Trim | Zelix KlassMaster', meta: [{ name: 'description', content: 'Complete local copy of this Zelix KlassMaster reference page.' }, { property: 'og:image', content: 'https://zkm-web.vercel.app/og/features.png' }], link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/features/featuresTrim' }], script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }] })
+const schema = [{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Trim",
+  "url": "https://zkm-web.vercel.app/features/featuresTrim"
+}, {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://zkm-web.vercel.app/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Features",
+      "item": "https://zkm-web.vercel.app/features"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Trim"
+    }
+  ]
+}]
+useHead({
+  title: 'Trim | Zelix KlassMaster',
+  meta: [{ name: 'description', content: 'Trim | Zelix KlassMaster' },
+    { property: 'og:image', content: 'https://zkm-web.vercel.app/og/features.png' }
+  ],
+  link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/features/featuresTrim' }],
+  script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }]
+})
 </script>

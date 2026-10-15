@@ -33,7 +33,7 @@
           <li>the signature of the method that contains the Reflection API method call and</li>
           <li>the signature of the Reflection API method call that was detected.</li>
         </ul>
-        <h3>What you need to do</h3>
+        <h2>What you need to do</h2>
         <ul>
           <li>the string is stored as an unencrypted string constant within an opened class file (as opposed, for example, to being read from a file) and</li>
           <li>the fully qualified old class name: is at least three characters long</li>
@@ -58,6 +58,40 @@
 
 <script setup lang="ts">
 import { useHead } from '@unhead/vue'
-const schema = {"@context":"https://schema.org","@type":"WebPage","name":"What you need to do","url":"https://zkm-web.vercel.app/docs/loadWarnings"}
-useHead({ title: 'Java Obfuscator - Zelix KlassMaster(TM) | Zelix KlassMaster', meta: [{ name: 'description', content: 'Complete local copy of this Zelix KlassMaster reference page.' }, { property: 'og:image', content: 'https://zkm-web.vercel.app/og/docs.png' }], link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/docs/loadWarnings' }], script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }] })
+const schema = [{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "What you need to do",
+  "url": "https://zkm-web.vercel.app/docs/loadWarnings"
+}, {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://zkm-web.vercel.app/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Docs",
+      "item": "https://zkm-web.vercel.app/docs"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "What you need to do"
+    }
+  ]
+}]
+useHead({
+  title: 'What you need to do | Zelix KlassMaster',
+  meta: [{ name: 'description', content: 'What you need to do | Zelix KlassMaster' },
+    { property: 'og:image', content: 'https://zkm-web.vercel.app/og/docs.png' }
+  ],
+  link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/docs/loadWarnings' }],
+  script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }]
+})
 </script>

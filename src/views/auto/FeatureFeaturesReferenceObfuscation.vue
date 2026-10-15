@@ -12,7 +12,6 @@
       </div>
       <div class="panel" style="margin-top: 20px;">
         <h2>Complete Local Copy</h2>
-        <h2>Java Reference Obfuscation</h2>
         <h3>Method decompiled</h3>
         <pre class="code"><code>public static void method0() {
    System.out.println("HelloWorld");
@@ -48,6 +47,40 @@ public static void method0(final long n4) {
 
 <script setup lang="ts">
 import { useHead } from '@unhead/vue'
-const schema = {"@context":"https://schema.org","@type":"WebPage","name":"Java Reference Obfuscation","url":"https://zkm-web.vercel.app/features/featuresReferenceObfuscation"}
-useHead({ title: 'Java Obfuscation - Zelix KlassMaster(TM) - Java Reference Obfuscation | Zelix KlassMaster', meta: [{ name: 'description', content: 'Complete local copy of this Zelix KlassMaster reference page.' }, { property: 'og:image', content: 'https://zkm-web.vercel.app/og/features.png' }], link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/features/featuresReferenceObfuscation' }], script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }] })
+const schema = [{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Reference Obfuscation",
+  "url": "https://zkm-web.vercel.app/features/featuresReferenceObfuscation"
+}, {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://zkm-web.vercel.app/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Features",
+      "item": "https://zkm-web.vercel.app/features"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Reference Obfuscation"
+    }
+  ]
+}]
+useHead({
+  title: 'Reference Obfuscation | Zelix KlassMaster',
+  meta: [{ name: 'description', content: 'Reference Obfuscation | Zelix KlassMaster' },
+    { property: 'og:image', content: 'https://zkm-web.vercel.app/og/features.png' }
+  ],
+  link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/features/featuresReferenceObfuscation' }],
+  script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }]
+})
 </script>

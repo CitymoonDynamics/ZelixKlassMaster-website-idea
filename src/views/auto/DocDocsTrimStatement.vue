@@ -13,7 +13,7 @@
           <li>Examples</li>
           <li>Syntax</li>
         </ul>
-        <h3>deleteSourceFileAttributes parameter</h3>
+        <h2>deleteSourceFileAttributes parameter</h2>
         <h3>deleteDeprecatedAttributes parameter</h3>
         <h3>deleteAnnotationAttributes parameter</h3>
         <h3>deleteExceptionAttributes parameter</h3>
@@ -66,6 +66,40 @@ trim deleteSourceFileAttributes=false //Don't remove Source File Attributes
 
 <script setup lang="ts">
 import { useHead } from '@unhead/vue'
-const schema = {"@context":"https://schema.org","@type":"WebPage","name":"Java Obfuscator - Zelix KlassMaster(TM) - trim","url":"https://zkm-web.vercel.app/docs/trimStatement"}
-useHead({ title: 'Java Obfuscator - Zelix KlassMaster(TM) - trim | Zelix KlassMaster', meta: [{ name: 'description', content: 'Complete local copy of this Zelix KlassMaster reference page.' }, { property: 'og:image', content: 'https://zkm-web.vercel.app/og/docs.png' }], link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/docs/trimStatement' }], script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }] })
+const schema = [{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Java Obfuscator - Zelix KlassMaster(TM) - trim",
+  "url": "https://zkm-web.vercel.app/docs/trimStatement"
+}, {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://zkm-web.vercel.app/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Docs",
+      "item": "https://zkm-web.vercel.app/docs"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Java Obfuscator - Zelix KlassMaster(TM) - trim"
+    }
+  ]
+}]
+useHead({
+  title: 'trim | Zelix KlassMaster',
+  meta: [{ name: 'description', content: 'Java Obfuscator - Zelix KlassMaster(TM) - trim | Zelix KlassMaster' },
+    { property: 'og:image', content: 'https://zkm-web.vercel.app/og/docs.png' }
+  ],
+  link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/docs/trimStatement' }],
+  script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }]
+})
 </script>

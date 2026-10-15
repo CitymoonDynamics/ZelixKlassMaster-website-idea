@@ -4,7 +4,7 @@
       <p class="muted">Reference</p>
       <h1>Website Terms of Use</h1>
       <div class="panel">
-        <h3>Website Terms of Use</h3>
+        <h2>Website Terms of Use</h2>
         <h3>Use of this website.</h3>
         <h3>Links to third party sites</h3>
         <h3>Limitation of liability</h3>
@@ -27,6 +27,40 @@
 
 <script setup lang="ts">
 import { useHead } from '@unhead/vue'
-const schema = {"@context":"https://schema.org","@type":"WebPage","name":"Website Terms of Use","url":"https://zkm-web.vercel.app/page/terms"}
-useHead({ title: 'Zelix KlassMaster(TM) - Website Terms of Use | Zelix KlassMaster', meta: [{ name: 'description', content: 'Complete local copy of this Zelix KlassMaster reference page.' }, { property: 'og:image', content: 'https://zkm-web.vercel.app/og/reference.png' }], link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/page/terms' }], script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }] })
+const schema = [{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Website Terms of Use",
+  "url": "https://zkm-web.vercel.app/page/terms"
+}, {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://zkm-web.vercel.app/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Reference",
+      "item": "https://zkm-web.vercel.app/reference"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Website Terms of Use"
+    }
+  ]
+}]
+useHead({
+  title: 'Website Terms of Use | Zelix KlassMaster',
+  meta: [{ name: 'description', content: 'Website Terms of Use | Zelix KlassMaster' },
+    { property: 'og:image', content: 'https://zkm-web.vercel.app/og/reference.png' }
+  ],
+  link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/page/terms' }],
+  script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }]
+})
 </script>

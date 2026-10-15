@@ -21,7 +21,7 @@
           <li>They override a method that has been explicitly or implicitly excluded.</li>
           <li>For example, if you explicitly exclude the method method1() in a particular interface then the method method1() will be implicitly excluded in all classes that implement that interface.</li>
         </ul>
-        <h3>Trimming "classic" applications</h3>
+        <h2>Trimming "classic" applications</h2>
         <ul>
           <li>the public static main(java.lang.String[]) method and</li>
           <li>the class that contains the public static main(java.lang.String[]) method.</li>
@@ -131,6 +131,40 @@
 
 <script setup lang="ts">
 import { useHead } from '@unhead/vue'
-const schema = {"@context":"https://schema.org","@type":"WebPage","name":"Java Obfuscator - Zelix KlassMaster(TM) - Trim Tutorial","url":"https://zkm-web.vercel.app/docs/trimTutorial"}
-useHead({ title: 'Java Obfuscator - Zelix KlassMaster(TM) - Trim Tutorial | Zelix KlassMaster', meta: [{ name: 'description', content: 'Complete local copy of this Zelix KlassMaster reference page.' }, { property: 'og:image', content: 'https://zkm-web.vercel.app/og/docs.png' }], link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/docs/trimTutorial' }], script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }] })
+const schema = [{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Java Obfuscator - Zelix KlassMaster(TM) - Trim Tutorial",
+  "url": "https://zkm-web.vercel.app/docs/trimTutorial"
+}, {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://zkm-web.vercel.app/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Docs",
+      "item": "https://zkm-web.vercel.app/docs"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Java Obfuscator - Zelix KlassMaster(TM) - Trim Tutorial"
+    }
+  ]
+}]
+useHead({
+  title: 'Trim Tutorial | Zelix KlassMaster',
+  meta: [{ name: 'description', content: 'Java Obfuscator - Zelix KlassMaster(TM) - Trim Tutorial | Zelix KlassMaster' },
+    { property: 'og:image', content: 'https://zkm-web.vercel.app/og/docs.png' }
+  ],
+  link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/docs/trimTutorial' }],
+  script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }]
+})
 </script>

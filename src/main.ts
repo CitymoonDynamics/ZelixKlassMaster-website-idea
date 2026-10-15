@@ -2,9 +2,8 @@ import { ViteSSG } from 'vite-ssg'
 import App from './App.vue'
 import { routes } from './router'
 import { autoRoutes } from './autoRoutes'
+import { SITE_URL } from './site'
 import './style.css'
-
-const SITE = 'https://zkm-web.vercel.app'
 
 export const createApp = ViteSSG(
   App,
@@ -33,14 +32,14 @@ export const createApp = ViteSSG(
       set('description', 'name', desc)
       set('og:title', 'property', title)
       set('og:description', 'property', desc)
-      set('og:url', 'property', SITE + to.fullPath)
+      set('og:url', 'property', SITE_URL + to.fullPath)
       let link = document.head.querySelector('link[rel="canonical"]') as HTMLLinkElement | null
       if (!link) {
         link = document.createElement('link')
         link.setAttribute('rel', 'canonical')
         document.head.appendChild(link)
       }
-      link.setAttribute('href', SITE + to.path)
+      link.setAttribute('href', SITE_URL + to.path)
     })
   }
 )

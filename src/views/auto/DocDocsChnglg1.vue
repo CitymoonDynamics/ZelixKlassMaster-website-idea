@@ -4,7 +4,7 @@
       <p class="muted">Docs</p>
       <h1>Sample Change Log File</h1>
       <div class="panel">
-        <h3>Sample Change Log File</h3>
+        <h2>Sample Change Log File</h2>
         <pre class="code"><code>Package: pack1	NameNotChanged
 Package: pack1.pack2	=&gt;	pack1.b
 
@@ -105,6 +105,40 @@ Class: pack1.Class1	NameNotChanged
 
 <script setup lang="ts">
 import { useHead } from '@unhead/vue'
-const schema = {"@context":"https://schema.org","@type":"WebPage","name":"Sample Change Log File","url":"https://zkm-web.vercel.app/docs/chnglg1"}
-useHead({ title: 'Java Obfuscator - Zelix KlassMaster(TM) | Zelix KlassMaster', meta: [{ name: 'description', content: 'Complete local copy of this Zelix KlassMaster reference page.' }, { property: 'og:image', content: 'https://zkm-web.vercel.app/og/docs.png' }], link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/docs/chnglg1' }], script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }] })
+const schema = [{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Sample Change Log File",
+  "url": "https://zkm-web.vercel.app/docs/chnglg1"
+}, {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://zkm-web.vercel.app/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Docs",
+      "item": "https://zkm-web.vercel.app/docs"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Sample Change Log File"
+    }
+  ]
+}]
+useHead({
+  title: 'Sample Change Log File | Zelix KlassMaster',
+  meta: [{ name: 'description', content: 'Sample Change Log File | Zelix KlassMaster' },
+    { property: 'og:image', content: 'https://zkm-web.vercel.app/og/docs.png' }
+  ],
+  link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/docs/chnglg1' }],
+  script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }]
+})
 </script>

@@ -104,6 +104,40 @@ public void m0(int i0) {
 
 <script setup lang="ts">
 import { useHead } from '@unhead/vue'
-const schema = {"@context":"https://schema.org","@type":"WebPage","name":"Java Obfuscator - Zelix KlassMaster(TM) - Use of Annotations to Specify Obfuscation Settings Tutorial","url":"https://zkm-web.vercel.app/docs/obfuscationSettingsAnnotationsTutorial"}
-useHead({ title: 'Java Obfuscator - Zelix KlassMaster(TM) - Use of Annotations to Specify Obfuscation Settings Tutorial | Zelix KlassMaster', meta: [{ name: 'description', content: 'Complete local copy of this Zelix KlassMaster reference page.' }, { property: 'og:image', content: 'https://zkm-web.vercel.app/og/docs.png' }], link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/docs/obfuscationSettingsAnnotationsTutorial' }], script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }] })
+const schema = [{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Java Obfuscator - Zelix KlassMaster(TM) - Use of Annotations to Specify Obfuscation Settings Tutorial",
+  "url": "https://zkm-web.vercel.app/docs/obfuscationSettingsAnnotationsTutorial"
+}, {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://zkm-web.vercel.app/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Docs",
+      "item": "https://zkm-web.vercel.app/docs"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Java Obfuscator - Zelix KlassMaster(TM) - Use of Annotations to Specify Obfuscation Settings Tutorial"
+    }
+  ]
+}]
+useHead({
+  title: 'Use of Annotations to Specify Obfuscation Settings Tuto | Zelix KlassMaster',
+  meta: [{ name: 'description', content: 'Java Obfuscator - Zelix KlassMaster(TM) - Use of Annotations | Zelix KlassMaster' },
+    { property: 'og:image', content: 'https://zkm-web.vercel.app/og/docs.png' }
+  ],
+  link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/docs/obfuscationSettingsAnnotationsTutorial' }],
+  script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }]
+})
 </script>

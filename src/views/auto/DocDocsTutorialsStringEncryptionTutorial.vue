@@ -12,7 +12,7 @@
           <li>How to use String Encryption functionality</li>
           <li>Interaction with Method Parameter Changes</li>
         </ul>
-        <h3>Method decompiled</h3>
+        <h2>Method decompiled</h2>
         <pre class="code"><code>public static void method0() {
    System.out.println("HelloWorld");
 }</code></pre>
@@ -51,6 +51,40 @@ public static void method0(long var0) {
 
 <script setup lang="ts">
 import { useHead } from '@unhead/vue'
-const schema = {"@context":"https://schema.org","@type":"WebPage","name":"Java Obfuscator - Zelix KlassMaster(TM) - String Encryption Tutorial","url":"https://zkm-web.vercel.app/docs/stringEncryptionTutorial"}
-useHead({ title: 'Java Obfuscator - Zelix KlassMaster(TM) - String Encryption Tutorial | Zelix KlassMaster', meta: [{ name: 'description', content: 'Complete local copy of this Zelix KlassMaster reference page.' }, { property: 'og:image', content: 'https://zkm-web.vercel.app/og/docs.png' }], link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/docs/stringEncryptionTutorial' }], script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }] })
+const schema = [{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Java Obfuscator - Zelix KlassMaster(TM) - String Encryption Tutorial",
+  "url": "https://zkm-web.vercel.app/docs/stringEncryptionTutorial"
+}, {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://zkm-web.vercel.app/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Docs",
+      "item": "https://zkm-web.vercel.app/docs"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Java Obfuscator - Zelix KlassMaster(TM) - String Encryption Tutorial"
+    }
+  ]
+}]
+useHead({
+  title: 'String Encryption Tutorial | Zelix KlassMaster',
+  meta: [{ name: 'description', content: 'Java Obfuscator - Zelix KlassMaster(TM) - String Encryption  | Zelix KlassMaster' },
+    { property: 'og:image', content: 'https://zkm-web.vercel.app/og/docs.png' }
+  ],
+  link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/docs/stringEncryptionTutorial' }],
+  script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }]
+})
 </script>

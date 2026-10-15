@@ -27,7 +27,8 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
 import { useHead } from '@unhead/vue'
-useHead({ title: 'Features | Zelix KlassMaster Java Obfuscator', meta: [{ name: 'description', content: 'All 20 Zelix KlassMaster protection features: Flow Obfuscation, String Encryption, Reference Obfuscation, Trim, ZKM Script and more.' }, { property: 'og:image', content: 'https://zkm-web.vercel.app/og/features.png' }], link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/features' }] })
+import { SITE_URL } from '../site'
+useHead({ title: 'Features | Zelix KlassMaster Java Obfuscator', meta: [{ name: 'description', content: 'All 20 Zelix KlassMaster protection features: Flow Obfuscation, String Encryption, Reference Obfuscation, Trim, ZKM Script and more.' }, { property: 'og:image', content: SITE_URL + '/og/features.png' }], link: [{ rel: 'canonical', href: SITE_URL + '/features' }] })
 const items = [
   { slug: 'featuresNameObfuscation', name: 'Name Obfuscation', cat: 'Protection / Size', desc: 'Renames packages, classes, methods and fields. Shrinks bytecode.' },
   { slug: 'featuresFlowObfuscation', name: 'Flow Obfuscation', cat: 'Protection', desc: 'Rewrites control flow in second and third generation. Blocks decompilers.' },

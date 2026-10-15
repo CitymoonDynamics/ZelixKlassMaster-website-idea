@@ -11,7 +11,6 @@
       </div>
       <div class="panel" style="margin-top: 20px;">
         <h2>Complete Local Copy</h2>
-        <h2>Java Exception Obfuscation</h2>
         <p>Java Obfuscator - Zelix KlassMaster(TM) - Java Exception Obfuscation</p>
         <p>Exception Obfuscation has a similar effect to Flow Obfuscation in that it changes your bytecode such that it has no direct Java source code equivalent. This of course complicates the task of a decompiler.</p>
         <p>The difference between Flow Obfuscation and Exception Obfuscation is that Exception Obfuscation makes slight changes to the exception handling of your bytecode rather than to the control flow structures.</p>
@@ -22,6 +21,40 @@
 
 <script setup lang="ts">
 import { useHead } from '@unhead/vue'
-const schema = {"@context":"https://schema.org","@type":"WebPage","name":"Java Exception Obfuscation","url":"https://zkm-web.vercel.app/features/featuresExceptionObfuscation"}
-useHead({ title: 'Java Obfuscator - Zelix KlassMaster(TM) - Java Exception Obfuscation | Zelix KlassMaster', meta: [{ name: 'description', content: 'Complete local copy of this Zelix KlassMaster reference page.' }, { property: 'og:image', content: 'https://zkm-web.vercel.app/og/features.png' }], link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/features/featuresExceptionObfuscation' }], script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }] })
+const schema = [{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Exception Obfuscation",
+  "url": "https://zkm-web.vercel.app/features/featuresExceptionObfuscation"
+}, {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://zkm-web.vercel.app/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Features",
+      "item": "https://zkm-web.vercel.app/features"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Exception Obfuscation"
+    }
+  ]
+}]
+useHead({
+  title: 'Exception Obfuscation | Zelix KlassMaster',
+  meta: [{ name: 'description', content: 'Exception Obfuscation | Zelix KlassMaster' },
+    { property: 'og:image', content: 'https://zkm-web.vercel.app/og/features.png' }
+  ],
+  link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/features/featuresExceptionObfuscation' }],
+  script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }]
+})
 </script>
