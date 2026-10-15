@@ -141,7 +141,7 @@ const schema = [{
   "@context": "https://schema.org",
   "@type": "WebPage",
   "name": "Calling Zelix KlassMaster(TM) from a Build Tool",
-  "url": "https://zkm-web.vercel.app/docs/buildToolApi"
+  "url": "https://citymoondynamics.github.io/ZelixKlassMaster-website-idea/docs/buildToolApi"
 }, {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
@@ -150,13 +150,13 @@ const schema = [{
       "@type": "ListItem",
       "position": 1,
       "name": "Home",
-      "item": "https://zkm-web.vercel.app/"
+      "item": "https://citymoondynamics.github.io/ZelixKlassMaster-website-idea/"
     },
     {
       "@type": "ListItem",
       "position": 2,
       "name": "Docs",
-      "item": "https://zkm-web.vercel.app/docs"
+      "item": "https://citymoondynamics.github.io/ZelixKlassMaster-website-idea/docs"
     },
     {
       "@type": "ListItem",
@@ -168,9 +168,9 @@ const schema = [{
 useHead({
   title: 'Calling Zelix KlassMaster(TM) from a Build Tool | Zelix KlassMaster',
   meta: [{ name: 'description', content: 'Calling Zelix KlassMaster(TM) from a Build Tool | Zelix KlassMaster' },
-    { property: 'og:image', content: 'https://zkm-web.vercel.app/og/docs.png' }
+    { property: 'og:image', content: 'https://citymoondynamics.github.io/ZelixKlassMaster-website-idea/og/docs.png' }
   ],
-  link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/docs/buildToolApi' }],
+  link: [{ rel: 'canonical', href: 'https://citymoondynamics.github.io/ZelixKlassMaster-website-idea/docs/buildToolApi' }],
   script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }]
 })
 </script>

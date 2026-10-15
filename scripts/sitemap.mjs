@@ -45,3 +45,11 @@ const llms =
 writeFileSync('public/llms.txt', llms)
 writeFileSync('dist/llms.txt', llms)
 console.log('llms.txt written')
+
+const robotsPath = 'public/robots.txt'
+try {
+  const robots = readFileSync(robotsPath, 'utf8').replace(/^Sitemap: .*$/m, `Sitemap: ${base}/sitemap.xml`)
+  writeFileSync(robotsPath, robots)
+} catch {
+  console.log('robots.txt not updated')
+}

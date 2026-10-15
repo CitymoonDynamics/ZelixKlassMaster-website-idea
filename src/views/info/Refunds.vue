@@ -36,7 +36,7 @@ const schema = [{
   "@context": "https://schema.org",
   "@type": "WebPage",
   "name": "Privacy Policy",
-  "url": "https://zkm-web.vercel.app/page/refunds"
+  "url": "https://citymoondynamics.github.io/ZelixKlassMaster-website-idea/page/refunds"
 }, {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
@@ -45,13 +45,13 @@ const schema = [{
       "@type": "ListItem",
       "position": 1,
       "name": "Home",
-      "item": "https://zkm-web.vercel.app/"
+      "item": "https://citymoondynamics.github.io/ZelixKlassMaster-website-idea/"
     },
     {
       "@type": "ListItem",
       "position": 2,
       "name": "Reference",
-      "item": "https://zkm-web.vercel.app/reference"
+      "item": "https://citymoondynamics.github.io/ZelixKlassMaster-website-idea/reference"
     },
     {
       "@type": "ListItem",
@@ -63,9 +63,9 @@ const schema = [{
 useHead({
   title: 'Privacy Policy | Zelix KlassMaster2',
   meta: [{ name: 'description', content: 'Privacy Policy | Zelix KlassMaster' },
-    { property: 'og:image', content: 'https://zkm-web.vercel.app/og/reference.png' }
+    { property: 'og:image', content: 'https://citymoondynamics.github.io/ZelixKlassMaster-website-idea/og/reference.png' }
   ],
-  link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/page/refunds' }],
+  link: [{ rel: 'canonical', href: 'https://citymoondynamics.github.io/ZelixKlassMaster-website-idea/page/refunds' }],
   script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }]
 })
 </script>

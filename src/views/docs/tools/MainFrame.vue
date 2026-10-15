@@ -18,7 +18,7 @@ const schema = [{
   "@context": "https://schema.org",
   "@type": "WebPage",
   "name": "Zelix KlassMaster(TM) Main Browser Window",
-  "url": "https://zkm-web.vercel.app/docs/mainFrame"
+  "url": "https://citymoondynamics.github.io/ZelixKlassMaster-website-idea/docs/mainFrame"
 }, {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
@@ -27,13 +27,13 @@ const schema = [{
       "@type": "ListItem",
       "position": 1,
       "name": "Home",
-      "item": "https://zkm-web.vercel.app/"
+      "item": "https://citymoondynamics.github.io/ZelixKlassMaster-website-idea/"
     },
     {
       "@type": "ListItem",
       "position": 2,
       "name": "Docs",
-      "item": "https://zkm-web.vercel.app/docs"
+      "item": "https://citymoondynamics.github.io/ZelixKlassMaster-website-idea/docs"
     },
     {
       "@type": "ListItem",
@@ -45,9 +45,9 @@ const schema = [{
 useHead({
   title: 'Zelix KlassMaster(TM) Main Browser Window | Zelix KlassMaster',
   meta: [{ name: 'description', content: 'Zelix KlassMaster(TM) Main Browser Window | Zelix KlassMaster' },
-    { property: 'og:image', content: 'https://zkm-web.vercel.app/og/docs.png' }
+    { property: 'og:image', content: 'https://citymoondynamics.github.io/ZelixKlassMaster-website-idea/og/docs.png' }
   ],
-  link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/docs/mainFrame' }],
+  link: [{ rel: 'canonical', href: 'https://citymoondynamics.github.io/ZelixKlassMaster-website-idea/docs/mainFrame' }],
   script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }]
 })
 </script>

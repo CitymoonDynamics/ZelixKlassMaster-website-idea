@@ -21,7 +21,7 @@ const schema = [{
   "@context": "https://schema.org",
   "@type": "WebPage",
   "name": "The resetMethodParameterObfuscationExclusions Statement",
-  "url": "https://zkm-web.vercel.app/docs/resetMethodParameterObfuscationExclusionsStatement"
+  "url": "https://citymoondynamics.github.io/ZelixKlassMaster-website-idea/docs/resetMethodParameterObfuscationExclusionsStatement"
 }, {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
@@ -30,13 +30,13 @@ const schema = [{
       "@type": "ListItem",
       "position": 1,
       "name": "Home",
-      "item": "https://zkm-web.vercel.app/"
+      "item": "https://citymoondynamics.github.io/ZelixKlassMaster-website-idea/"
     },
     {
       "@type": "ListItem",
       "position": 2,
       "name": "Docs",
-      "item": "https://zkm-web.vercel.app/docs"
+      "item": "https://citymoondynamics.github.io/ZelixKlassMaster-website-idea/docs"
     },
     {
       "@type": "ListItem",
@@ -48,9 +48,9 @@ const schema = [{
 useHead({
   title: 'The resetMethodParameterObfuscationExclusions Statement | Zelix KlassMaster',
   meta: [{ name: 'description', content: 'The resetMethodParameterObfuscationExclusions Statement | Zelix KlassMaster' },
-    { property: 'og:image', content: 'https://zkm-web.vercel.app/og/docs.png' }
+    { property: 'og:image', content: 'https://citymoondynamics.github.io/ZelixKlassMaster-website-idea/og/docs.png' }
   ],
-  link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/docs/resetMethodParameterObfuscationExclusionsStatement' }],
+  link: [{ rel: 'canonical', href: 'https://citymoondynamics.github.io/ZelixKlassMaster-website-idea/docs/resetMethodParameterObfuscationExclusionsStatement' }],
   script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }]
 })
 </script>

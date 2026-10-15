@@ -1,6 +1,6 @@
 User-agent: *
 Allow: /
-Sitemap: https://zkm-web.vercel.app/sitemap.xml
+Sitemap: https://citymoondynamics.github.io/ZelixKlassMaster-website-idea/sitemap.xml
 
 User-agent: GPTBot
 Allow: /

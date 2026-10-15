@@ -104,7 +104,7 @@ const schema = [{
   "@context": "https://schema.org",
   "@type": "WebPage",
   "name": "Java Obfuscator - Zelix KlassMaster(TM) - methodParameterChangesInclude",
-  "url": "https://zkm-web.vercel.app/docs/methodParameterChangesIncludeStatement"
+  "url": "https://citymoondynamics.github.io/ZelixKlassMaster-website-idea/docs/methodParameterChangesIncludeStatement"
 }, {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
@@ -113,13 +113,13 @@ const schema = [{
       "@type": "ListItem",
       "position": 1,
       "name": "Home",
-      "item": "https://zkm-web.vercel.app/"
+      "item": "https://citymoondynamics.github.io/ZelixKlassMaster-website-idea/"
     },
     {
       "@type": "ListItem",
       "position": 2,
       "name": "Docs",
-      "item": "https://zkm-web.vercel.app/docs"
+      "item": "https://citymoondynamics.github.io/ZelixKlassMaster-website-idea/docs"
     },
     {
       "@type": "ListItem",
@@ -131,9 +131,9 @@ const schema = [{
 useHead({
   title: 'methodParameterChangesInclude | Zelix KlassMaster',
   meta: [{ name: 'description', content: 'Java Obfuscator - Zelix KlassMaster(TM) - methodParameterCha | Zelix KlassMaster' },
-    { property: 'og:image', content: 'https://zkm-web.vercel.app/og/docs.png' }
+    { property: 'og:image', content: 'https://citymoondynamics.github.io/ZelixKlassMaster-website-idea/og/docs.png' }
   ],
-  link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/docs/methodParameterChangesIncludeStatement' }],
+  link: [{ rel: 'canonical', href: 'https://citymoondynamics.github.io/ZelixKlassMaster-website-idea/docs/methodParameterChangesIncludeStatement' }],
   script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }]
 })
 </script>

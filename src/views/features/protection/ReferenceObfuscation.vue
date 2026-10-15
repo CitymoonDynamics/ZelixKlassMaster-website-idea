@@ -51,7 +51,7 @@ const schema = [{
   "@context": "https://schema.org",
   "@type": "WebPage",
   "name": "Reference Obfuscation",
-  "url": "https://zkm-web.vercel.app/features/featuresReferenceObfuscation"
+  "url": "https://citymoondynamics.github.io/ZelixKlassMaster-website-idea/features/featuresReferenceObfuscation"
 }, {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
@@ -60,13 +60,13 @@ const schema = [{
       "@type": "ListItem",
       "position": 1,
       "name": "Home",
-      "item": "https://zkm-web.vercel.app/"
+      "item": "https://citymoondynamics.github.io/ZelixKlassMaster-website-idea/"
     },
     {
       "@type": "ListItem",
       "position": 2,
       "name": "Features",
-      "item": "https://zkm-web.vercel.app/features"
+      "item": "https://citymoondynamics.github.io/ZelixKlassMaster-website-idea/features"
     },
     {
       "@type": "ListItem",
@@ -78,9 +78,9 @@ const schema = [{
 useHead({
   title: 'Reference Obfuscation | Zelix KlassMaster',
   meta: [{ name: 'description', content: 'Reference Obfuscation | Zelix KlassMaster' },
-    { property: 'og:image', content: 'https://zkm-web.vercel.app/og/features.png' }
+    { property: 'og:image', content: 'https://citymoondynamics.github.io/ZelixKlassMaster-website-idea/og/features.png' }
   ],
-  link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/features/featuresReferenceObfuscation' }],
+  link: [{ rel: 'canonical', href: 'https://citymoondynamics.github.io/ZelixKlassMaster-website-idea/features/featuresReferenceObfuscation' }],
   script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }]
 })
 </script>

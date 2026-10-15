@@ -17,6 +17,9 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      SITE_URL: https://citymoondynamics.github.io/ZelixKlassMaster-website-idea/
+      SITE_BASE: /ZelixKlassMaster-website-idea/
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4

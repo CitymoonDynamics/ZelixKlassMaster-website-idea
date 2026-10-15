@@ -3,8 +3,10 @@ import vue from '@vitejs/plugin-vue'
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
-  const siteUrl = env.SITE_URL ?? 'https://zkm-web.vercel.app'
+  const siteUrl = process.env.SITE_URL || env.SITE_URL || 'https://zkm-web.vercel.app'
+  const siteBase = process.env.SITE_BASE || env.SITE_BASE || '/'
   return {
+    base: siteBase,
     plugins: [vue()],
     define: {
       __SITE_URL__: JSON.stringify(siteUrl)

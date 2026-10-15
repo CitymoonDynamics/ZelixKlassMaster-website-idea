@@ -109,7 +109,7 @@ const schema = [{
   "@context": "https://schema.org",
   "@type": "WebPage",
   "name": "Sample Change Log File",
-  "url": "https://zkm-web.vercel.app/docs/chnglg1"
+  "url": "https://citymoondynamics.github.io/ZelixKlassMaster-website-idea/docs/chnglg1"
 }, {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
@@ -118,13 +118,13 @@ const schema = [{
       "@type": "ListItem",
       "position": 1,
       "name": "Home",
-      "item": "https://zkm-web.vercel.app/"
+      "item": "https://citymoondynamics.github.io/ZelixKlassMaster-website-idea/"
     },
     {
       "@type": "ListItem",
       "position": 2,
       "name": "Docs",
-      "item": "https://zkm-web.vercel.app/docs"
+      "item": "https://citymoondynamics.github.io/ZelixKlassMaster-website-idea/docs"
     },
     {
       "@type": "ListItem",
@@ -136,9 +136,9 @@ const schema = [{
 useHead({
   title: 'Sample Change Log File | Zelix KlassMaster',
   meta: [{ name: 'description', content: 'Sample Change Log File | Zelix KlassMaster' },
-    { property: 'og:image', content: 'https://zkm-web.vercel.app/og/docs.png' }
+    { property: 'og:image', content: 'https://citymoondynamics.github.io/ZelixKlassMaster-website-idea/og/docs.png' }
   ],
-  link: [{ rel: 'canonical', href: 'https://zkm-web.vercel.app/docs/chnglg1' }],
+  link: [{ rel: 'canonical', href: 'https://citymoondynamics.github.io/ZelixKlassMaster-website-idea/docs/chnglg1' }],
   script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }]
 })
 </script>
