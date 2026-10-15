@@ -3,7 +3,7 @@ import tseslint from 'typescript-eslint'
 import vue from 'eslint-plugin-vue'
 
 export default tseslint.config(
-  { ignores: ['dist/**', 'node_modules/**', 'assets-raw/**', 'src/views/auto/**', 'src/autoRoutes.ts'] },
+  { ignores: ['dist/**', 'node_modules/**', 'assets-raw/**', 'src/views/features/**', 'src/views/docs/**', 'src/views/info/**', 'src/autoRoutes.ts'] },
   js.configs.recommended,
   ...tseslint.configs.recommended,
   ...vue.configs['flat/recommended'],

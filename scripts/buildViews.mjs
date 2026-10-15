@@ -166,8 +166,12 @@ function renderBlocks(blocks, startAtH3 = false) {
   return out
 }
 
-await rm('src/views/auto', { recursive: true, force: true })
-await mkdir('src/views/auto', { recursive: true })
+await rm('src/views/features', { recursive: true, force: true })
+await rm('src/views/docs', { recursive: true, force: true })
+await rm('src/views/info', { recursive: true, force: true })
+await mkdir('src/views/features', { recursive: true })
+await mkdir('src/views/docs', { recursive: true })
+await mkdir('src/views/info', { recursive: true })
 
 function parseFeatures() {
   const out = {}
@@ -200,6 +204,7 @@ for (const loc of locs) {
   const rel = loc.replace('https://www.zelix.com/', '').replace(/\.html$/, '')
   const parts = rel.split('/')
   let routePath
+  let outDir
   let comp
   let crumb
   if (parts[1] === 'index') continue
@@ -208,12 +213,14 @@ for (const loc of locs) {
   if (parts[0] === 'klassmaster' && parts[1].startsWith('features') && parts.length === 2) {
     const slug = parts[1]
     routePath = '/features/' + slug
-    comp = 'Feature' + pascal(slug)
+    outDir = 'src/views/features'
+    comp = pascal(slug.replace(/^features/, ''))
     crumb = 'Features'
   } else if (parts[1] === 'docs') {
     const page = parts[parts.length - 1]
     routePath = '/docs/' + page
-    comp = 'Doc' + pascal(parts.slice(1).join('__'))
+    outDir = 'src/views/docs'
+    comp = pascal(page)
     crumb = 'Docs'
   } else if (parts.length === 2) {
     const name = parts[1]
@@ -224,7 +231,8 @@ for (const loc of locs) {
     }
     if (!map[name]) continue
     routePath = '/page/' + map[name]
-    comp = 'Page' + pascal(map[name])
+    outDir = 'src/views/info'
+    comp = pascal(map[name])
     crumb = 'Reference'
   } else {
     continue
@@ -314,8 +322,8 @@ for (const loc of locs) {
       `  script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }]\n` +
       `})\n` +
       `</` + `script>\n`
-    await writeFile('src/views/auto/' + comp + '.vue', content)
-    routes.push({ path: routePath, comp, title: pageTitle, desc: firstPara.slice(0, 150) || pageTitle })
+    await writeFile(outDir + '/' + comp + '.vue', content)
+    routes.push({ path: routePath, file: outDir.replace('src/', './') + '/' + comp + '.vue', title: pageTitle, desc: firstPara.slice(0, 150) || pageTitle })
     ok++
     if (ok % 20 === 0) console.log(ok + ' views')
   } catch (e) {
@@ -344,7 +352,7 @@ for (const x of routes) {
 }
 
 const routeLines = routes
-  .map((x) => `  { path: '${x.path}', component: () => import('./views/auto/${x.comp}.vue'), meta: { title: ${JSON.stringify(x.title + ' | Zelix KlassMaster')}, desc: ${JSON.stringify(x.desc)} } },`)
+  .map((x) => `  { path: '${x.path}', component: () => import('${x.file}'), meta: { title: ${JSON.stringify(x.title + ' | Zelix KlassMaster')}, desc: ${JSON.stringify(x.desc)} } },`)
   .join('\n')
 await writeFile(
   'src/autoRoutes.ts',
